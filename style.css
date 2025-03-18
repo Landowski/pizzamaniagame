@@ -8,6 +8,10 @@
 
     * {
         box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent; /* Remove o destaque azul no toque */
+    	-webkit-user-select: none; /* Impede a seleção no WebKit (Chrome/Safari) */
+   		user-select: none; /* Impede a seleção no geral */
+    	outline: none;
     }
 
     body {
