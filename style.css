@@ -9,11 +9,6 @@
     * {
         box-sizing: border-box;
     }
-    
-    *:focus {
-    outline: none;
-    box-shadow: none;
-    }
 
     body {
         display: flex;
@@ -21,6 +16,7 @@
         align-items: center;
         margin: 0;
         font-family: var(--font);
+        user-select: none;
     }
 
     .container {
@@ -33,7 +29,6 @@
         border-radius: 30px;
         margin-top: 20px;
         overflow: hidden !important;
-        user-select: none;
     }
 
     .header-counters {
