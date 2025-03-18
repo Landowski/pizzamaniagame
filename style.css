@@ -9,6 +9,11 @@
     * {
         box-sizing: border-box;
     }
+    
+    *:focus {
+    outline: none;
+    box-shadow: none;
+    }
 
     body {
         display: flex;
