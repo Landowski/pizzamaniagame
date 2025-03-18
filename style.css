@@ -28,6 +28,7 @@
         border-radius: 30px;
         margin-top: 20px;
         overflow: hidden !important;
+        user-select: none;
     }
 
     .header-counters {
@@ -37,7 +38,6 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px;
-        user-select: none;
     }
 
     .header-counters-items {
