@@ -1,0 +1,337 @@
+    :root {
+    --font: "Roboto", sans-serif;
+    --color-green: #13CE66;
+    --color-green-hover: #14bd60;
+    --color-yellow: #ffe09e;
+    --color-red: #e93565;
+    --color-button: #3971ff;
+    }
+
+    * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+        font-family: var(--font);
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 340px;
+        width: 100%;
+        border: 2px solid #e0e0e0;
+        border-radius: 30px;
+        margin-top: 20px;
+        overflow: hidden !important;
+    }
+
+    .header-counters {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .header-counters-items {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 5px;
+        color: #000;
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    .container-pizza {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #buttonMakePizza {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        margin-top: -25px;
+    }
+
+    #buttonMakePizza img {
+        transition: transform 0.15s ease-in-out;
+    }
+      
+    #buttonMakePizza img:hover {
+        transform: scale(1.05);
+    }
+
+    #buttonMakePizza:active {
+        transform: scale(0.98);
+    }
+
+    .floating-text {
+        position: absolute;
+        font-size: 22px;
+        font-weight: 700;
+        color: #FEE100;
+        user-select: none;
+        pointer-events: none;
+        text-shadow: 2px 2px 0px #C12727;
+        animation: floatUp 1.2s ease-out forwards;
+    }
+    
+    @keyframes floatUp {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-30px);
+            opacity: 0;
+        }
+    }
+
+    #buttonSellPizzas {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 275px;
+        padding: 15px 0;
+        background-color: var(--color-green);
+        color: white;
+        font-family: var(--font);
+        font-weight: 600;
+        font-size: 17px;
+        outline: none;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        gap: 10px;
+        margin-top: 25px;
+    }
+
+    #buttonSellPizzas:hover {
+        background-color: var(--color-green-hover);
+    }
+
+    #money-counter {
+        display: flex;
+        width: fit-content;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: 700;
+        user-select: none;
+    }
+
+    .container-buy {
+        width: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+        gap: 10px;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: var(--color-yellow);
+    }
+
+    #buy-chef, #buy-deliverer, #buy-van, #buy-pizzeria  {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+    }
+
+    .footer-counters-items {
+        width: fit-content;
+        color: var(--color-red);
+        border: 1px solid var(--color-red);
+        font-size: 14px;
+        font-weight: 600;
+        padding: 0 4px;
+        border-radius: 5px;
+        margin-top: 5px;
+        margin-bottom: 7px;
+    }  
+
+    .name-text {
+        font-size: 11px;
+        font-weight: 800;
+        margin-top: 5px;
+        color: var(--color-red);
+    }
+
+    .off, .on {
+        font-size: 15px;
+    }
+
+    .off {
+        color: #d8b872
+    }
+
+    .on {
+        color: var(--color-green)
+    }
+
+    .container-config {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        max-width: 340px;
+        width: 100%;
+        margin-top: 20px;
+        overflow: hidden !important;
+    }
+
+    .config {
+        width: 80%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .config img {
+        cursor: pointer;
+    }
+
+    .toast-container {
+        position: fixed;
+        bottom: -100px;
+        left: 0;
+        right: 0;
+        background-color: black;
+        color: white;
+        padding: 16px;
+        text-align: center;
+        z-index: 10000;
+        transition: bottom 0.3s ease-in-out;
+        cursor: pointer;
+    }
+      
+    .toast-container.show {
+        bottom: 0;
+    }
+
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+        z-index: 9999999999;
+    }
+
+    .popup:not(.hidden) {
+        visibility: visible;
+    }
+    
+    #config-popup:not(.hidden) {
+        visibility: visible;
+    }
+
+    .popup button {
+        width: 100%;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font);
+        font-weight: bold;
+        font-size: 15px;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 7px 15px;
+        color: #fff;
+        background-color: var(--color-button);
+    }
+
+    .popup a {
+        color: var(--color-button);
+        text-align: center;
+    }
+
+    .popup-content {
+        position: relative;
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: white;
+        padding: 20px;
+        border-radius: 5px;
+        font-size: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .popup-content select {
+        width: 100%;
+        font-family: var(--font);
+        font-size: 18px;
+        border-radius: 5px;
+        padding: 5px 7px;
+    }
+
+    .popup-scroll {
+        max-height: 360px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        margin-bottom: 20px;
+    }
+
+    .popup-scroll p {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .popup-scroll span {
+        width: 48px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 9px;
+        background-color: var(--color-green);
+        color: #fff;
+        border-radius: 360px;
+    }
+
+    .popup-scroll::-webkit-scrollbar {
+        width: 6px !important;
+        border-radius: 360px;
+    }
+    
+    .popup-scroll::-webkit-scrollbar-thumb {
+        background: #ccc !important;
+        border-radius: 360px;
+    }
+    
+    .popup-scroll::-webkit-scrollbar-track {
+        background: rgba(0,0,0,0.08) !important;
+        border-radius: 360px;
+    }
