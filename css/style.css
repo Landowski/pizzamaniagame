@@ -61,8 +61,9 @@
         font-weight: 500;
     }
 
-    .header-counters-items.dark {
+    .header-counters-items.dark, .header-counters-items.dark svg {
         color: #ebebeb;
+        stroke: #666;
     }
 
     .container-pizza {
