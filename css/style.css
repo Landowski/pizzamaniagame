@@ -145,6 +145,14 @@
         user-select: none;
     }
 
+    #money-counter.dark svg {
+        stroke: #ebebeb;
+    }
+
+    #counterMoney.dark {
+        color: #ebebeb;
+    }
+
     .container-buy {
         width: 100%;
         display: flex;

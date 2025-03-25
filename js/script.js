@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sound = sound === 'true';
   }
 
-  const elementsToToggle = document.querySelectorAll('.container, .container-buy, .header-counters-items, #counterChef, #counterDeliverer, #counterVan, #counterPizzeria, #nameChef, #nameDeliverer, #nameVan, #namePizzeria');
+  const elementsToToggle = document.querySelectorAll('.container, .container-buy, .header-counters-items, #money-counter, #counterMoney, #counterChef, #counterDeliverer, #counterVan, #counterPizzeria, #nameChef, #nameDeliverer, #nameVan, #namePizzeria');
   const configDarkMode  = document.getElementById('configDarkMode');
 
   let darkMode = localStorage.getItem('darkMode') === 'true';
