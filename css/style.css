@@ -1,7 +1,6 @@
     :root {
     --font: "Roboto", sans-serif;
     --color-green: #13CE66;
-    --color-green-hover: #14bd60;
     --color-yellow: #ffe09e;
     --color-red: #e93565;
     --color-button: #3971ff;
@@ -23,6 +22,10 @@
         font-family: var(--font);
     }
 
+    body.dark {
+        background-color: #333;
+    }
+
     .container {
         display: flex;
         flex-direction: column;
@@ -33,6 +36,10 @@
         border-radius: 30px;
         margin-top: 20px;
         overflow: hidden !important;
+    }
+
+    .container.dark {
+        border-color: #666;
     }
 
     .header-counters {
@@ -52,6 +59,10 @@
         color: #000;
         font-size: 18px;
         font-weight: 500;
+    }
+
+    .header-counters-items.dark {
+        color: #ebebeb;
     }
 
     .container-pizza {
@@ -122,10 +133,6 @@
         margin-top: 25px;
     }
 
-    #buttonSellPizzas:hover {
-        background-color: var(--color-green-hover);
-    }
-
     #money-counter {
         display: flex;
         width: fit-content;
@@ -149,6 +156,10 @@
         background-color: var(--color-yellow);
     }
 
+    .container-buy.dark {
+        background-color: #555;
+    }
+
     #buy-chef, #buy-deliverer, #buy-van, #buy-pizzeria  {
         display: flex;
         flex-direction: column;
@@ -169,15 +180,23 @@
         border-radius: 5px;
         margin-top: 5px;
         margin-bottom: 7px;
-    }  
+    }
 
+    .footer-counters-items.dark {
+        color: #ebebeb;
+        border-color: #ebebeb;
+    }
+    
     .name-text {
         font-size: 11px;
         font-weight: 800;
         margin-top: 5px;
         color: var(--color-red);
     }
-
+    .name-text.dark {
+        color: #ebebeb;
+    }
+    
     .off, .on {
         font-size: 15px;
     }

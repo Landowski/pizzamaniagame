@@ -23,6 +23,12 @@
     <link rel="canonical" href="https://pizza-mania-game.com">
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" sizes="24x24" />
     <link rel="apple-touch-icon" href="images/favicon.ico">
+    <link rel="manifest" href="js/manifest.json">
+    <script>
+        if (typeof navigator.serviceWorker !== 'undefined') {
+            navigator.serviceWorker.register('js/service-worker.js')
+        }
+    </script>
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
