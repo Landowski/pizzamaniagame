@@ -725,14 +725,19 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  buttonMakePizza.addEventListener('click', function () {
-    totalClicks++;
-    checkClickReward();
-    checkUnlocks();
-    pizzasCount += clickValue;
-    updateDisplay();
-    saveGameData();
-    createFloatingText('+' + clickValue);
+  buttonMakePizza.addEventListener('click', function (event) {
+    if (event.isTrusted) {
+      totalClicks++;
+      checkClickReward();
+      checkUnlocks();
+      pizzasCount += clickValue;
+      updateDisplay();
+      saveGameData();
+      createFloatingText('+' + clickValue);
+    } else {
+      alert("Clique automatizado não permitido!");
+    }
+    
   });
 
   buttonSellPizzas.addEventListener('click', function () {
