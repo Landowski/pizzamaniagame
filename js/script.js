@@ -27,7 +27,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    return false;
+  });
   
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
