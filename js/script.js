@@ -505,15 +505,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function updateClickValue() {
     let baseValue = 1;
     if (unlocked === 'global') {
-      baseValue += 999;
+      baseValue += 1999;
     } else if (unlocked === 'master') {
-      baseValue += 99;
+      baseValue += 999;
     } else if (unlocked === 'chocolate') {
-      baseValue += 9;
+      baseValue += 499;
     } else if (unlocked === 'coke') {
-      baseValue += 4;
+      baseValue += 99;
     }
-    let thousandBonus = Math.floor(totalClicks / 1000);
+    let thousandBonus = Math.floor(totalClicks / 1000)  * 10;
     clickValue = baseValue + thousandBonus;
   }
   
@@ -737,7 +737,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       showToast('Autoclick not allowed! 💀');
     }
-    
   });
 
   buttonSellPizzas.addEventListener('click', function () {
