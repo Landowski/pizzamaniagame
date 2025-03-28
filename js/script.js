@@ -26,6 +26,19 @@ document.addEventListener('DOMContentLoaded', function () {
       element.classList.toggle('dark');
     });
   });
+
+  document.addEventListener('contextmenu', (e) => {
+    e.preventDefault();
+    return false;
+  });
+
+  document.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+  }, { passive: false });
+
+  document.addEventListener('touchmove', (e) => {
+      e.preventDefault();
+  }, { passive: false });
   
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
