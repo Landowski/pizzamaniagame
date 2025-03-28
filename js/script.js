@@ -735,7 +735,7 @@ document.addEventListener('DOMContentLoaded', function () {
       saveGameData();
       createFloatingText('+' + clickValue);
     } else {
-      alert("Clique automatizado não permitido!");
+      showToast('Autoclick not allowed! 💀');
     }
     
   });
