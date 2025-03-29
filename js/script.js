@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (totalClicks > 0 && totalClicks % 103 === 0) {
       clickValue += 1;
       if (sound) popSound.play();
-      showToast('🍕 +1 PIZZA!');
+      showToast('🍕 +1 PIZZA! ✖');
       triggerConfetti();
     }
   }
