@@ -4,8 +4,8 @@
     "start_url": "/",
     "display": "standalone",
     "background_color": "#FFFFFF",
-    "theme_color": "#ea3766",
-    "description": "Fun game about creating and managing pizzerias",
+    "theme_color": "#c12727",
+    "description": "Fun clicker game about creating and managing pizzerias",
     "icons": [
         {
             "src": "../images/icon192.png",
