@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   let currentLanguage = localStorage.getItem('language') || 'en';
+  let clickBonus = 0;
   const soundImage = document.getElementById('sound');
   const audio = new Audio('sound/cash.mp3');
   const popSound = new Audio('sound/pop.mp3');
@@ -490,6 +491,7 @@ document.addEventListener('DOMContentLoaded', function () {
     totalClicks = parseInt(localStorage.getItem('totalClicks') || 0);
     unlocked = localStorage.getItem('unlocked') || 'none';
     thousand = localStorage.getItem('thousand') === 'true';
+    clickBonus = parseInt(localStorage.getItem('clickBonus') || 0);
     updateClickValue();
     updatePizzaImage();
     updateDisplay();
@@ -524,7 +526,7 @@ document.addEventListener('DOMContentLoaded', function () {
       baseValue += 99;
     }
     let thousandBonus = Math.floor(totalClicks / 1000)  * 10;
-    clickValue = baseValue + thousandBonus;
+    clickValue = baseValue + thousandBonus + clickBonus;
   }
   
   function updatePizzaImage() {
@@ -595,6 +597,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     if (totalClicks > 0 && totalClicks % 103 === 0) {
       clickValue += 1;
+      localStorage.setItem('clickBonus', clickBonus);
       updateClickValue();
       if (sound) popSound.play();
       showToast('🍕 +1 PIZZA! ✖');
@@ -879,6 +882,7 @@ document.addEventListener('DOMContentLoaded', function () {
       unlocked = 'none';
       clickValue = 1;
       thousand = false;
+      clickBonus = 0;
       updatePizzaImage();
       localStorage.removeItem('pizzasCount');
       localStorage.removeItem('moneyCount');
@@ -896,6 +900,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.removeItem('thousand');
       localStorage.removeItem('sound');
       localStorage.removeItem('language');
+      localStorage.removeItem('clickBonus');
       soundImage.src = 'images/config-sound-on.svg';
       localStorage.removeItem('darkMode');
       document.body.classList.remove('dark');
