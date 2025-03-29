@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 UNLOCKED +10 PIZZAS PER CLICK: pizza + soda pop + chocolate combo for one hundred thousand clicks! ✖',
       toastUnlockCoke: '🏆 UNLOCKED +5 PIZZAS PER CLICK: pizza + soda pop combo for ten thousand clicks! ✖',
       toastUnlockThousand: '🏆 UNLOCKED +1,000 PIZZAS PER SECOND: bonus for one million clicks! ✖',
-      toastClickReward: '🏆 UNLOCKED +1 PIZZA PER CLICK: click reward for {clicks} clicks! ✖'
+      toastClickReward: '🏆 UNLOCKED +10 PIZZA PER CLICK: click reward for {clicks} clicks! ✖'
     },
     'pt-br': {
       buttonSellPizzas: 'VENDER TODAS AS PIZZAS!',
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 DESBLOQUEADO +10 PIZZAS POR CLIQUE: combo de pizza + refrigerante + chocolate por cem mil cliques! ✖',
       toastUnlockCoke: '🏆 DESBLOQUEADO +5 PIZZAS POR CLIQUE: combo de pizza + refrigerante por dez mil cliques! ✖',
       toastUnlockThousand: '🏆 DESBLOQUEADO +1.000 PIZZAS POR SEGUNDO: bônus por um milhão de cliques! ✖',
-      toastClickReward: '🏆 DESBLOQUEADO +1 PIZZA POR CLIQUE: recompensa por {clicks} cliques! ✖'
+      toastClickReward: '🏆 DESBLOQUEADO +10 PIZZA POR CLIQUE: recompensa por {clicks} cliques! ✖'
     },
     'es': {
       buttonSellPizzas: '¡VENDER TODAS LAS PIZZAS!',
@@ -175,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 DESBLOQUEADO +10 PIZZAS POR CLIC: combo de pizza + refresco + chocolate por cien mil clics! ✖',
       toastUnlockCoke: '🏆 DESBLOQUEADO +5 PIZZAS POR CLIC: combo de pizza + refresco por diez mil clics! ✖',
       toastUnlockThousand: '🏆 DESBLOQUEADO +1.000 PIZZAS POR SEGUNDO: bono por un millón de clics! ✖',
-      toastClickReward: '🏆 DESBLOQUEADO +1 PIZZA POR CLIC: recompensa por {clicks} clics! ✖'
+      toastClickReward: '🏆 DESBLOQUEADO +10 PIZZA POR CLIC: recompensa por {clicks} clics! ✖'
     },
     'ja': {
       buttonSellPizzas: 'すべてのピザを売る！',
@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 クリックごとに+10ピザを解除：10万クリックでピザ＋ソーダ＋チョコレートのコンボ！ ✖',
       toastUnlockCoke: '🏆 クリックごとに+5ピザを解除：1万クリックでピザ＋ソーダのコンボ！ ✖',
       toastUnlockThousand: '🏆 秒ごとに+1,000ピザを解除：100万クリックのボーナス！ ✖',
-      toastClickReward: '🏆 クリックごとに+1ピザを解除：{clicks}クリックの報酬！ ✖'
+      toastClickReward: '🏆 クリックごとに+10ピザを解除：{clicks}クリックの報酬！ ✖'
     },
     'ru': {
       buttonSellPizzas: 'ПРОДАТЬ ВСЕ ПИЦЦЫ!',
@@ -235,7 +235,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 РАЗБЛОКИРОВАНО +10 ПИЦЦ ЗА КЛИК: комбо пицца + газировка + шоколад за сто тысяч кликов! ✖',
       toastUnlockCoke: '🏆 РАЗБЛОКИРОВАНО +5 ПИЦЦ ЗА КЛИК: комбо пицца + газировка за десять тысяч кликов! ✖',
       toastUnlockThousand: '🏆 РАЗБЛОКИРОВАНО +1,000 ПИЦЦ В СЕКУНДУ: бонус за миллион кликов! ✖',
-      toastClickReward: '🏆 РАЗБЛОКИРОВАНО +1 ПИЦЦА ЗА КЛИК: награда за {clicks} кликов! ✖'
+      toastClickReward: '🏆 РАЗБЛОКИРОВАНО +10 ПИЦЦА ЗА КЛИК: награда за {clicks} кликов! ✖'
     },
     'zh': {
       buttonSellPizzas: '出售所有比萨饼！',
@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 解锁每次点击+10比萨饼：十万点击获得比萨+汽水+巧克力组合！ ✖',
       toastUnlockCoke: '🏆 解锁每次点击+5比萨饼：一万点击获得比萨+汽水组合！ ✖',
       toastUnlockThousand: '🏆 解锁每秒+1,000比萨饼：一百万点击的奖励！ ✖',
-      toastClickReward: '🏆 解锁每次点击+1比萨饼：{clicks}点击的奖励！ ✖'
+      toastClickReward: '🏆 解锁每次点击+10比萨饼：{clicks}点击的奖励！ ✖'
     },
     'it': {
       buttonSellPizzas: 'VENDI TUTTE LE PIZZE!',
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 SBLOCCATO +10 PIZZE PER CLICK: combo pizza + bibita + cioccolato per centomila click! ✖',
       toastUnlockCoke: '🏆 SBLOCCATO +5 PIZZE PER CLICK: combo pizza + bibita per diecimila click! ✖',
       toastUnlockThousand: '🏆 SBLOCCATO +1.000 PIZZE AL SECONDO: bonus per un milione di click! ✖',
-      toastClickReward: '🏆 SBLOCCATO +1 PIZZA PER CLICK: ricompensa per {clicks} click! ✖'
+      toastClickReward: '🏆 SBLOCCATO +10 PIZZA PER CLICK: ricompensa per {clicks} click! ✖'
     },
     'de': {
       buttonSellPizzas: 'ALLE PIZZEN VERKAUFEN!',
@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 FREIGESCHALTET +10 PIZZEN PRO KLICK: Pizza + Limo + Schokolade Combo für einhunderttausend Klicks! ✖',
       toastUnlockCoke: '🏆 FREIGESCHALTET +5 PIZZEN PRO KLICK: Pizza + Limo Combo für zehntausend Klicks! ✖',
       toastUnlockThousand: '🏆 FREIGESCHALTET +1.000 PIZZEN PRO SEKUNDE: Bonus für eine Million Klicks! ✖',
-      toastClickReward: '🏆 FREIGESCHALTET +1 PIZZA PRO KLICK: Belohnung für {clicks} Klicks! ✖'
+      toastClickReward: '🏆 FREIGESCHALTET +10 PIZZA PRO KLICK: Belohnung für {clicks} Klicks! ✖'
     },
     'ko': {
       buttonSellPizzas: '모든 피자 판매!',
@@ -355,7 +355,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 클릭당 +10피자 해제: 10만 클릭으로 피자 + 탄산음료 + 초콜릿 콤보! ✖',
       toastUnlockCoke: '🏆 클릭당 +5피자 해제: 1만 클릭으로 피자 + 탄산음료 콤보! ✖',
       toastUnlockThousand: '🏆 초당 +1,000피자 해제: 100만 클릭 보너스! ✖',
-      toastClickReward: '🏆 클릭당 +1피자 해제: {clicks}클릭 보상! ✖'
+      toastClickReward: '🏆 클릭당 +10피자 해제: {clicks}클릭 보상! ✖'
     },
     'fr': {
       buttonSellPizzas: 'VENDRE TOUTES LES PIZZAS !',
@@ -385,7 +385,7 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 DÉBLOQUÉ +10 PIZZAS PAR CLIC : combo pizza + soda + chocolat pour cent mille clics ! ✖',
       toastUnlockCoke: '🏆 DÉBLOQUÉ +5 PIZZAS PAR CLIC : combo pizza + soda pour dix mille clics ! ✖',
       toastUnlockThousand: '🏆 DÉBLOQUÉ +1.000 PIZZAS PAR SECONDE : bonus pour un million de clics ! ✖',
-      toastClickReward: '🏆 DÉBLOQUÉ +1 PIZZA PAR CLIC : récompense pour {clicks} clics ! ✖'
+      toastClickReward: '🏆 DÉBLOQUÉ +10 PIZZA PAR CLIC : récompense pour {clicks} clics ! ✖'
     }
   };
 
@@ -681,9 +681,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           chefCount++;
-          const percentIncrease = Math.random() * 24 + 1;
+          const percentIncrease = Math.random() * 4 + 1;
           chefPrice = Math.round(price * (1 + percentIncrease / 100));
-          createFloatingText('+1 Chef');
+          createFloatingText('+1 ' + translations[currentLanguage].nameChef);
         }
         break;
       case 'deliverer':
@@ -691,9 +691,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           delivererCount++;
-          const percentIncrease = Math.random() * 24 + 1;
+          const percentIncrease = Math.random() * 4 + 1;
           delivererPrice = Math.round(price * (1 + percentIncrease / 100));
-          createFloatingText('+1 Deliverer');
+          createFloatingText('+1 ' + translations[currentLanguage].nameDeliverer);
         }
         break;
       case 'van':
@@ -701,9 +701,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           vanCount++;
-          const percentIncrease = Math.random() * 24 + 1;
+          const percentIncrease = Math.random() * 4 + 1;
           vanPrice = Math.round(price * (1 + percentIncrease / 100));
-          createFloatingText('+1 Van');
+          createFloatingText('+1 ' + translations[currentLanguage].nameVan);
         }
         break;
       case 'pizzeria':
@@ -711,9 +711,9 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           pizzeriaCount++;
-          const percentIncrease = Math.random() * 24 + 1;
+          const percentIncrease = Math.random() * 4 + 1;
           pizzeriaPrice = Math.round(price * (1 + percentIncrease / 100));
-          createFloatingText('+1 Pizzeria');
+          createFloatingText('+1 ' + translations[currentLanguage].namePizzeria);
         }
         break;
     }
