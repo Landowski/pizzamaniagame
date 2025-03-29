@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clickBonus += 1;
         updateClickValue();
         if (sound) popSound.play();
-        showToast(translations[currentLanguage].toastClickBonus);
+        showToast('🍕 +1 PIZZA! ✖');
         triggerConfetti();
         saveGameData();
     }
