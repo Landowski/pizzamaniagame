@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   
   let currentLanguage = localStorage.getItem('language') || 'en';
-  let clickBonus = 0;
   const soundImage = document.getElementById('sound');
   const audio = new Audio('sound/cash.mp3');
   const popSound = new Audio('sound/pop.mp3');
@@ -462,6 +461,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let unlocked = 'none';
   let clickValue = 1;
   let thousand = false;
+  let clickBonus = 0;
 
   const DEFAULT_PRICES = {
     chef: 100,
@@ -489,9 +489,9 @@ document.addEventListener('DOMContentLoaded', function () {
     vanPrice = parseInt(localStorage.getItem('vanPrice') || DEFAULT_PRICES.van);
     pizzeriaPrice = parseInt(localStorage.getItem('pizzeriaPrice') || DEFAULT_PRICES.pizzeria);
     totalClicks = parseInt(localStorage.getItem('totalClicks') || 0);
+    clickBonus = parseInt(localStorage.getItem('clickBonus') || 0);
     unlocked = localStorage.getItem('unlocked') || 'none';
     thousand = localStorage.getItem('thousand') === 'true';
-    clickBonus = parseInt(localStorage.getItem('clickBonus') || 0);
     updateClickValue();
     updatePizzaImage();
     updateDisplay();
@@ -512,6 +512,7 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('totalClicks', totalClicks);
     localStorage.setItem('unlocked', unlocked);
     localStorage.setItem('thousand', thousand);
+    localStorage.setItem('clickBonus', clickBonus);
   }
   
   function updateClickValue() {
@@ -590,18 +591,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function checkClickReward() {
     if (totalClicks > 0 && totalClicks % 1000 === 0) {
-      updateClickValue();
-      if (sound) popSound.play();
-      showToast(translations[currentLanguage].toastClickReward.replace('{clicks}', totalClicks));
-      triggerConfetti();
+        updateClickValue();
+        if (sound) popSound.play();
+        showToast(translations[currentLanguage].toastClickReward.replace('{clicks}', totalClicks));
+        triggerConfetti();
     }
     if (totalClicks > 0 && totalClicks % 103 === 0) {
-      clickValue += 1;
-      localStorage.setItem('clickBonus', clickBonus);
-      updateClickValue();
-      if (sound) popSound.play();
-      showToast('🍕 +1 PIZZA! ✖');
-      triggerConfetti();
+        clickBonus += 1;
+        updateClickValue();
+        if (sound) popSound.play();
+        showToast(translations[currentLanguage].toastClickBonus);
+        triggerConfetti();
+        saveGameData();
     }
   }
   
