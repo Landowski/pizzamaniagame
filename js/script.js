@@ -741,9 +741,6 @@ document.addEventListener('DOMContentLoaded', function () {
     updatePizzasPerSecond();
     updateDisplay();
     saveGameData();
-    if (sound && moneyCount >= price) {
-      audio.play();
-    }
   }
 
   buttonMakePizza.addEventListener('click', function (event) {
