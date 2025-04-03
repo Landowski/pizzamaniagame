@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
   
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
+  const audioTheme = new Audio('sound/theme.mp3');
   const audioPop = new Audio('sound/pop.mp3');
   const audioCash = new Audio('sound/cash.mp3');
   const audioConfetti = new Audio('sound/confetti.mp3');
@@ -925,4 +926,7 @@ document.addEventListener('DOMContentLoaded', function () {
   updateDisplay();
   setInterval(saveGameData, 10000);
   setInterval(generateAutomaticPizzas, 1000);
+  if (sound) {
+        audioTheme.play();
+  }
 });
