@@ -110,12 +110,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 The more you click, the more rewards you earn! Can you reach 1 million clicks and see what happens?',
       textPrivacyPolicy: 'Privacy page about Pizza Mania',
       textResetGame: 'Are you sure you want to reset the game? All progress will be lost!',
-      toastUnlockGlobal: '🏆 UNLOCKED +2,000 PIZZAS PER CLICK: owner of a world pizzeria for five hundred thousand clicks! ✖',
-      toastUnlockMaster: '🏆 UNLOCKED +1,000 PIZZAS PER CLICK: recognition of "KING OF PIZZA" for three hundred thousand clicks! ✖',
-      toastUnlockChocolate: '🏆 UNLOCKED +500 PIZZAS PER CLICK: pizza + soda pop + chocolate combo for one hundred thousand clicks! ✖',
-      toastUnlockCoke: '🏆 UNLOCKED +100 PIZZAS PER CLICK: pizza + soda pop combo for ten thousand clicks! ✖',
-      toastUnlockThousand: '🏆 UNLOCKED +100,000 PIZZAS PER SECOND: bonus for one million clicks! ✖',
-      toastClickReward: '🏆 UNLOCKED +10 PIZZA PER CLICK: click reward for {clicks} clicks! ✖',
+      toastUnlockGlobal: '🏆 UNLOCKED OWNER OF A WORLD PIZZERIA! +2,000 PIZZAS PER CLICK',
+      toastUnlockMaster: '🏆 UNLOCKED RECOGNITION OF "KING OF PIZZA"! +1,000 PIZZAS PER CLICK',
+      toastUnlockChocolate: '🏆 UNLOCKED CHOCOLATE! +500 PIZZAS PER CLICK',
+      toastUnlockCoke: '🏆 UNLOCKED SODA POP! +100 PIZZAS PER CLICK',
+      toastUnlockThousand: '🏆 UNLOCKED ONE MILLION CLICKS BONUS! +100,000 PIZZAS PER SECOND',
+      toastClickReward: '🏆 UNLOCKED CLICKING REWARD! +10 PIZZA',
       toastAutoclick: 'Autoclick not allowed!'
     },
     'pt-br': {
@@ -141,12 +141,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 Quanto mais você clica, mais recompensas ganha! Consegue chegar a 1 milhão de cliques e ver o que acontece?',
       textPrivacyPolicy: 'Página de privacidade sobre Pizza Mania',
       textResetGame: 'Tem certeza que deseja resetar o jogo? Todo o progresso será perdido!',
-      toastUnlockGlobal: '🏆 DESBLOQUEADO +2,000 PIZZAS POR CLIQUE: dono de uma pizzaria mundial por quinhentos mil cliques! ✖',
-      toastUnlockMaster: '🏆 DESBLOQUEADO +1,000 PIZZAS POR CLIQUE: reconhecimento de "REI DA PIZZA" por trezentos mil cliques! ✖',
-      toastUnlockChocolate: '🏆 DESBLOQUEADO +500 PIZZAS POR CLIQUE: combo de pizza + refrigerante + chocolate por cem mil cliques! ✖',
-      toastUnlockCoke: '🏆 DESBLOQUEADO +100 PIZZAS POR CLIQUE: combo de pizza + refrigerante por dez mil cliques! ✖',
-      toastUnlockThousand: '🏆 DESBLOQUEADO +100,000 PIZZAS POR SEGUNDO: bônus por um milhão de cliques! ✖',
-      toastClickReward: '🏆 DESBLOQUEADO +10 PIZZA POR CLIQUE: recompensa por {clicks} cliques! ✖',
+      toastUnlockGlobal: '🏆 DESBLOQUEADO PROPRIETÁRIO DE UMA PIZZARIA MUNDIAL: +2.000 PIZZAS POR CLIQUE',
+      toastUnlockMaster: '🏆 DESBLOQUEADO RECONHECIMENTO DE "REI DA PIZZA"! +1.000 PIZZAS POR CLIQUE',
+      toastUnlockChocolate: '🏆 DESBLOQUEADO CHOCOLATE! +500 PIZZAS POR CLIQUE',
+      toastUnlockCoke: '🏆 DESBLOQUEADO REFRIGERANTE! +100 PIZZAS POR CLIQUE',
+      toastUnlockThousand: '🏆 DESBLOQUEADO BÔNUS DE UM MILHÃO DE CLIQUES! +100.000 PIZZAS POR SEGUNDO',
+      toastClickReward: '🏆 DESBLOQUEADO RECOMPENSA DE CLIQUE! +10 PIZZAS',
       toastAutoclick: 'Autoclick não permitido!'
     },
     'es': {
@@ -172,12 +172,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 ¡Cuanto más haces clic, más recompensas ganas! ¿Puedes llegar a 1 millón de clics y ver qué pasa?',
       textPrivacyPolicy: 'Página de privacidad sobre Pizza Mania',
       textResetGame: '¿Estás seguro de que quieres reiniciar el juego? ¡Todo el progreso se perderá!',
-      toastUnlockGlobal: '🏆 DESBLOQUEADO +2,000 PIZZAS POR CLIC: dueño de una pizzería mundial por quinientos mil clics! ✖',
-      toastUnlockMaster: '🏆 DESBLOQUEADO +1,000 PIZZAS POR CLIC: reconocimiento de "REY DE LA PIZZA" por trescientos mil clics! ✖',
-      toastUnlockChocolate: '🏆 DESBLOQUEADO +500 PIZZAS POR CLIC: combo de pizza + refresco + chocolate por cien mil clics! ✖',
-      toastUnlockCoke: '🏆 DESBLOQUEADO +100 PIZZAS POR CLIC: combo de pizza + refresco por diez mil clics! ✖',
-      toastUnlockThousand: '🏆 DESBLOQUEADO +100,000 PIZZAS POR SEGUNDO: bono por un millón de clics! ✖',
-      toastClickReward: '🏆 DESBLOQUEADO +10 PIZZA POR CLIC: recompensa por {clicks} clics! ✖',
+      toastUnlockGlobal: '🏆 DESBLOQUEADO PROPIETARIO DE UNA PIZZERÍA MUNDIAL: +2.000 PIZZAS POR CLIC',
+      toastUnlockMaster: '🏆 DESBLOQUEADO RECONOCIMIENTO DE "REY DE LA PIZZA"! +1.000 PIZZAS POR CLIC',
+      toastUnlockChocolate: '🏆 DESBLOQUEADO CHOCOLATE! +500 PIZZAS POR CLIC',
+      toastUnlockCoke: '🏆 DESBLOQUEADO REFRESCO! +100 PIZZAS POR CLIC',
+      toastUnlockThousand: '🏆 DESBLOQUEADO BONIFICACIÓN DE UN MILLÓN DE CLICS! +100.000 PIZZAS POR SEGUNDO',
+      toastClickReward: '🏆 DESBLOQUEADA RECOMPENSA POR CLIC! +10 PIZZAS',
       toastAutoclick: '¡Autoclick no permitido!'
     },
     'ja': {
@@ -203,12 +203,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 クリックすればするほど、より多くの報酬を獲得できます！100万回クリックして何が起こるか見てみませんか？',
       textPrivacyPolicy: 'Pizza Maniaのプライバシーページ',
       textResetGame: 'ゲームをリセットしますか？すべての進行状況が失われます！',
-      toastUnlockGlobal: '🏆 クリックごとに+2,000ピザを解除：50万クリックで世界のピザ屋のオーナー！ ✖',
-      toastUnlockMaster: '🏆 クリックごとに+1,000ピザを解除：30万クリックで「ピザの王」の称号を獲得！ ✖',
-      toastUnlockChocolate: '🏆 クリックごとに+500ピザを解除：10万クリックでピザ＋ソーダ＋チョコレートのコンボ！ ✖',
-      toastUnlockCoke: '🏆 クリックごとに+100ピザを解除：1万クリックでピザ＋ソーダのコンボ！ ✖',
-      toastUnlockThousand: '🏆 秒ごとに+100,000ピザを解除：100万クリックのボーナス！ ✖',
-      toastClickReward: '🏆 クリックごとに+10ピザを解除：{clicks}クリックの報酬！ ✖',
+      toastUnlockGlobal: '🏆 解除：世界的ピッツェリアのオーナー：クリックごとに+2,000ピザ',
+      toastUnlockMaster: '🏆 解除：「ピザの王」の称号！クリックごとに+1,000ピザ',
+      toastUnlockChocolate: '🏆 解除：チョコレート！クリックごとに+500ピザ',
+      toastUnlockCoke: '🏆 解除：ソーダポップ！クリックごとに+100ピザ',
+      toastUnlockThousand: '🏆 解除：100万クリックボーナス！毎秒+100,000ピザ',
+      toastClickReward: '🏆 解除：クリック報酬！+10ピザ',
       toastAutoclick: '自動クリックは許可されていません！'
     },
     'ru': {
@@ -234,12 +234,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 Чем больше вы кликаете, тем больше наград получаете! Сможете ли вы достичь 1 миллиона кликов и увидеть, что произойдет?',
       textPrivacyPolicy: 'Страница конфиденциальности о Pizza Mania',
       textResetGame: 'Вы уверены, что хотите сбросить игру? Весь прогресс будет потерян!',
-      toastUnlockGlobal: '🏆 РАЗБЛОКИРОВАНО +2,000 ПИЦЦ ЗА КЛИК: владелец мировой пиццерии за пятьсот тысяч кликов! ✖',
-      toastUnlockMaster: '🏆 РАЗБЛОКИРОВАНО +1,000 ПИЦЦ ЗА КЛИК: признание "КОРОЛЯ ПИЦЦЫ" за триста тысяч кликов! ✖',
-      toastUnlockChocolate: '🏆 РАЗБЛОКИРОВАНО +500 ПИЦЦ ЗА КЛИК: комбо пицца + газировка + шоколад за сто тысяч кликов! ✖',
-      toastUnlockCoke: '🏆 РАЗБЛОКИРОВАНО +100 ПИЦЦ ЗА КЛИК: комбо пицца + газировка за десять тысяч кликов! ✖',
-      toastUnlockThousand: '🏆 РАЗБЛОКИРОВАНО +100,000 ПИЦЦ В СЕКУНДУ: бонус за миллион кликов! ✖',
-      toastClickReward: '🏆 РАЗБЛОКИРОВАНО +10 ПИЦЦА ЗА КЛИК: награда за {clicks} кликов! ✖',
+      toastUnlockGlobal: '🏆 РАЗБЛОКИРОВАН ВЛАДЕЛЕЦ МИРОВОЙ ПИЦЦЕРИИ: +2.000 ПИЦЦ ЗА КЛИК',
+      toastUnlockMaster: '🏆 РАЗБЛОКИРОВАНО ПРИЗНАНИЕ "КОРОЛЬ ПИЦЦЫ"! +1.000 ПИЦЦ ЗА КЛИК',
+      toastUnlockChocolate: '🏆 РАЗБЛОКИРОВАН ШОКОЛАД! +500 ПИЦЦ ЗА КЛИК',
+      toastUnlockCoke: '🏆 РАЗБЛОКИРОВАНА ГАЗИРОВКА! +100 ПИЦЦ ЗА КЛИК',
+      toastUnlockThousand: '🏆 РАЗБЛОКИРОВАН БОНУС ЗА МИЛЛИОН КЛИКОВ! +100.000 ПИЦЦ В СЕКУНДУ',
+      toastClickReward: '🏆 РАЗБЛОКИРОВАНА НАГРАДА ЗА КЛИК! +10 ПИЦЦ',
       toastAutoclick: 'Автоклик не разрешен!'
     },
     'zh': {
@@ -265,12 +265,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 点击越多，获得的奖励越多！您能达到100万次点击并查看会发生什么吗？',
       textPrivacyPolicy: '关于Pizza Mania的隐私页面',
       textResetGame: '您确定要重置游戏吗？所有进度都将丢失！',
-      toastUnlockGlobal: '🏆 解锁每次点击+2,000比萨饼：五十万点击成为世界比萨店老板！ ✖',
-      toastUnlockMaster: '🏆 解锁每次点击+1,000比萨饼：三十万点击获得“比萨之王”称号！ ✖',
-      toastUnlockChocolate: '🏆 解锁每次点击+500比萨饼：十万点击获得比萨+汽水+巧克力组合！ ✖',
-      toastUnlockCoke: '🏆 解锁每次点击+100比萨饼：一万点击获得比萨+汽水组合！ ✖',
-      toastUnlockThousand: '🏆 解锁每秒+100,000比萨饼：一百万点击的奖励！ ✖',
-      toastClickReward: '🏆 解锁每次点击+10比萨饼：{clicks}点击的奖励！ ✖',
+      toastUnlockGlobal: '🏆 解锁全球披萨店老板：每次点击+2,000披萨',
+      toastUnlockMaster: '🏆 解锁"披萨之王"称号！每次点击+1,000披萨',
+      toastUnlockChocolate: '🏆 解锁巧克力！每次点击+500披萨',
+      toastUnlockCoke: '🏆 解锁汽水！每次点击+100披萨',
+      toastUnlockThousand: '🏆 解锁百万次点击奖励！每秒+100,000披萨',
+      toastClickReward: '🏆 解锁点击奖励！+10披萨',
       toastAutoclick: '不允许自动点击！'
     },
     'it': {
@@ -296,12 +296,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 Più clicchi, più ricompense guadagni! Puoi raggiungere 1 milione di clic e vedere cosa succede?',
       textPrivacyPolicy: 'Pagina sulla privacy di Pizza Mania',
       textResetGame: 'Sei sicuro di voler reimpostare il gioco? Tutti i progressi andranno persi!',
-      toastUnlockGlobal: '🏆 SBLOCCATO +2,000 PIZZE PER CLICK: proprietario di una pizzeria mondiale per cinquecentomila click! ✖',
-      toastUnlockMaster: '🏆 SBLOCCATO +1,000 PIZZE PER CLICK: riconoscimento di "RE DELLA PIZZA" per trecentomila click! ✖',
-      toastUnlockChocolate: '🏆 SBLOCCATO +500 PIZZE PER CLICK: combo pizza + bibita + cioccolato per centomila click! ✖',
-      toastUnlockCoke: '🏆 SBLOCCATO +100 PIZZE PER CLICK: combo pizza + bibita per diecimila click! ✖',
-      toastUnlockThousand: '🏆 SBLOCCATO +100,000 PIZZE AL SECONDO: bonus per un milione di click! ✖',
-      toastClickReward: '🏆 SBLOCCATO +10 PIZZA PER CLICK: ricompensa per {clicks} click! ✖',
+      toastUnlockGlobal: '🏆 SBLOCCATO PROPRIETARIO DI UNA PIZZERIA MONDIALE: +2.000 PIZZE PER CLIC',
+      toastUnlockMaster: '🏆 SBLOCCATO RICONOSCIMENTO DI "RE DELLA PIZZA"! +1.000 PIZZE PER CLIC',
+      toastUnlockChocolate: '🏆 SBLOCCATO CIOCCOLATO! +500 PIZZE PER CLIC',
+      toastUnlockCoke: '🏆 SBLOCCATA BIBITA GASSATA! +100 PIZZE PER CLIC',
+      toastUnlockThousand: '🏆 SBLOCCATO BONUS DA UN MILIONE DI CLIC! +100.000 PIZZE AL SECONDO',
+      toastClickReward: '🏆 SBLOCCATA RICOMPENSA PER CLIC! +10 PIZZE',
       toastAutoclick: 'Autoclick non consentito!'
     },
     'de': {
@@ -327,12 +327,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 Je mehr du klickst, desto mehr Belohnungen erhältst du! Kannst du 1 Million Klicks erreichen und sehen, was passiert?',
       textPrivacyPolicy: 'Datenschutzseite über Pizza Mania',
       textResetGame: 'Bist du sicher, dass du das Spiel zurücksetzen möchtest? Alle Fortschritte gehen verloren!',
-      toastUnlockGlobal: '🏆 FREIGESCHALTET +2,000 PIZZEN PRO KLICK: Besitzer einer weltweiten Pizzeria für fünfhunderttausend Klicks! ✖',
-      toastUnlockMaster: '🏆 FREIGESCHALTET +1,000 PIZZEN PRO KLICK: Anerkennung als "KÖNIG DER PIZZA" für dreihunderttausend Klicks! ✖',
-      toastUnlockChocolate: '🏆 FREIGESCHALTET +500 PIZZEN PRO KLICK: Pizza + Limo + Schokolade Combo für einhunderttausend Klicks! ✖',
-      toastUnlockCoke: '🏆 FREIGESCHALTET +100 PIZZEN PRO KLICK: Pizza + Limo Combo für zehntausend Klicks! ✖',
-      toastUnlockThousand: '🏆 FREIGESCHALTET +100,000 PIZZEN PRO SEKUNDE: Bonus für eine Million Klicks! ✖',
-      toastClickReward: '🏆 FREIGESCHALTET +10 PIZZA PRO KLICK: Belohnung für {clicks} Klicks! ✖',
+      toastUnlockGlobal: '🏆 FREIGESCHALTET BESITZER EINER WELTPIZZERIA: +2.000 PIZZEN PRO KLICK',
+      toastUnlockMaster: '🏆 FREIGESCHALTET ANERKENNUNG ALS "PIZZAKÖNIG"! +1.000 PIZZEN PRO KLICK',
+      toastUnlockChocolate: '🏆 FREIGESCHALTET SCHOKOLADE! +500 PIZZEN PRO KLICK',
+      toastUnlockCoke: '🏆 FREIGESCHALTET LIMONADE! +100 PIZZEN PRO KLICK',
+      toastUnlockThousand: '🏆 FREIGESCHALTET EINE MILLION KLICKS BONUS! +100.000 PIZZEN PRO SEKUNDE',
+      toastClickReward: '🏆 FREIGESCHALTET KLICK-BELOHNUNG! +10 PIZZEN',
       toastAutoclick: 'Autoklick nicht erlaubt!'
     },
     'ko': {
@@ -358,12 +358,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 더 많이 클릭할수록 더 많은 보상을 얻습니다! 100만 번 클릭하고 무슨 일이 일어나는지 확인할 수 있을까요?',
       textPrivacyPolicy: 'Pizza Mania 개인정보 보호 페이지',
       textResetGame: '게임을 재설정하시겠습니까? 모든 진행 상황이 손실됩니다!',
-      toastUnlockGlobal: '🏆 클릭당 +2,000피자 해제: 50만 클릭으로 세계 피자 가게 주인! ✖',
-      toastUnlockMaster: '🏆 클릭당 +1,000피자 해제: 30만 클릭으로 "피자의 왕" 칭호 획득! ✖',
-      toastUnlockChocolate: '🏆 클릭당 +500피자 해제: 10만 클릭으로 피자 + 탄산음료 + 초콜릿 콤보! ✖',
-      toastUnlockCoke: '🏆 클릭당 +100피자 해제: 1만 클릭으로 피자 + 탄산음료 콤보! ✖',
-      toastUnlockThousand: '🏆 초당 +100,000피자 해제: 100만 클릭 보너스! ✖',
-      toastClickReward: '🏆 클릭당 +10피자 해제: {clicks}클릭 보상! ✖',
+      toastUnlockGlobal: '🏆 해금됨 세계 피자가게 소유자: 클릭당 +2,000 피자',
+      toastUnlockMaster: '🏆 해금됨 "피자의 왕" 인정! 클릭당 +1,000 피자',
+      toastUnlockChocolate: '🏆 해금됨 초콜릿! 클릭당 +500 피자',
+      toastUnlockCoke: '🏆 해금됨 소다팝! 클릭당 +100 피자',
+      toastUnlockThousand: '🏆 해금됨 백만 클릭 보너스! 초당 +100,000 피자',
+      toastClickReward: '🏆 해금됨 클릭 보상! +10 피자',
       toastAutoclick: '자동 클릭이 허용되지 않습니다!'
     },
     'fr': {
@@ -389,12 +389,12 @@ document.addEventListener('DOMContentLoaded', function () {
       textMoreClicks: '🏆 Plus vous cliquez, plus vous gagnez de récompenses ! Pouvez-vous atteindre 1 million de clics et voir ce qui se passe ?',
       textPrivacyPolicy: 'Page de confidentialité sur Pizza Mania',
       textResetGame: 'Êtes-vous sûr de vouloir réinitialiser le jeu ? Tous les progrès seront perdus !',
-      toastUnlockGlobal: '🏆 DÉBLOQUÉ +2,000 PIZZAS PAR CLIC : propriétaire d\'une pizzeria mondiale pour cinq cent mille clics ! ✖',
-      toastUnlockMaster: '🏆 DÉBLOQUÉ +1,000 PIZZAS PAR CLIC : reconnaissance de "ROI DE LA PIZZA" pour trois cent mille clics ! ✖',
-      toastUnlockChocolate: '🏆 DÉBLOQUÉ +500 PIZZAS PAR CLIC : combo pizza + soda + chocolat pour cent mille clics ! ✖',
-      toastUnlockCoke: '🏆 DÉBLOQUÉ +100 PIZZAS PAR CLIC : combo pizza + soda pour dix mille clics ! ✖',
-      toastUnlockThousand: '🏆 DÉBLOQUÉ +100,000 PIZZAS PAR SECONDE : bonus pour un million de clics ! ✖',
-      toastClickReward: '🏆 DÉBLOQUÉ +10 PIZZA PAR CLIC : récompense pour {clicks} clics ! ✖',
+      toastUnlockGlobal: '🏆 DÉBLOQUÉ PROPRIÉTAIRE D\'UNE PIZZERIA MONDIALE : +2 000 PIZZAS PAR CLIC',
+      toastUnlockMaster: '🏆 DÉBLOQUÉ RECONNAISSANCE DE "ROI DE LA PIZZA" ! +1 000 PIZZAS PAR CLIC',
+      toastUnlockChocolate: '🏆 DÉBLOQUÉ CHOCOLAT ! +500 PIZZAS PAR CLIC',
+      toastUnlockCoke: '🏆 DÉBLOQUÉ SODA ! +100 PIZZAS PAR CLIC',
+      toastUnlockThousand: '🏆 DÉBLOQUÉ BONUS D\'UN MILLION DE CLICS ! +100 000 PIZZAS PAR SECONDE',
+      toastClickReward: '🏆 DÉBLOQUÉ RÉCOMPENSE DE CLIC ! +10 PIZZAS',
       toastAutoclick: 'Autoclic non autorisé!'
     }
   };
@@ -600,7 +600,7 @@ document.addEventListener('DOMContentLoaded', function () {
         clickBonus += 1;
         updateClickValue();
         if (sound) popSound.play();
-        showToast('🍕 +1 PIZZA! ✖');
+        showToast('🍕 +1 PIZZA!');
         triggerConfetti();
         saveGameData();
     }
