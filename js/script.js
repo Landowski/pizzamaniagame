@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded', function () {
         showToast(translations[currentLanguage].toastClickReward.replace('{clicks}', totalClicks));
         triggerConfetti();
     }
-    if (totalClicks > 0 && totalClicks % 503 === 0) {
+    if (totalClicks > 0 && totalClicks % 600 === 0) {
         clickBonus += 1;
         updateClickValue();
         if (sound) popSound.play();
