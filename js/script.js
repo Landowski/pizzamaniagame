@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
   audioTheme.loop = true;
   const audioPop = new Audio('sound/pop.mp3');
   const audioCash = new Audio('sound/cash.mp3');
+  const audioBuy = new Audio('sound/buy.mp3');
   const audioConfetti = new Audio('sound/confetti.mp3');
   const configSound = document.getElementById('configSound');
   const buttonMakePizza = document.getElementById('buttonMakePizza');
@@ -741,6 +742,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
         break;
     }
+    if (sound) {
+        audioBuy.play();
+    }
     updatePizzasPerSecond();
     updateDisplay();
     saveGameData();
@@ -874,7 +878,7 @@ document.addEventListener('DOMContentLoaded', function () {
       function hideToast() {
           toast.classList.remove('show');
           toast.removeEventListener('click', hideToast);
-          clearTimeout(autoCloseTimer); // Cancela o timer se fechado manualmente
+          clearTimeout(autoCloseTimer);
       }
       toast.addEventListener('click', hideToast);
   }
