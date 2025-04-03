@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
   const audioTheme = new Audio('sound/theme.mp3');
+  audioTheme.loop = true;
   const audioPop = new Audio('sound/pop.mp3');
   const audioCash = new Audio('sound/cash.mp3');
   const audioConfetti = new Audio('sound/confetti.mp3');
@@ -794,6 +795,11 @@ document.addEventListener('DOMContentLoaded', function () {
     sound = !sound;
     localStorage.setItem('sound', sound);
     updateSoundIcon();
+    if (sound) {
+        audioTheme.play();
+    } else {
+        audioTheme.pause();
+    }
   });
 
   configInfo.addEventListener("click", function() {
@@ -926,4 +932,11 @@ document.addEventListener('DOMContentLoaded', function () {
   updateDisplay();
   setInterval(saveGameData, 10000);
   setInterval(generateAutomaticPizzas, 1000);
+  audioTheme.play();
+  document.addEventListener('click', function firstInteraction() {
+    if (sound && audioTheme.paused) {
+        audioTheme.play();
+    }
+    document.removeEventListener('click', firstInteraction);
+  }, { once: true });
 });
