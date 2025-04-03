@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function () {
       unlocked = 'global';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) popSound.play();
+      if (sound) audioConfetti.play();
       showToast(translations[currentLanguage].toastUnlockGlobal);
     }
     else if (totalClicks >= 300000 && unlocked !== 'global' && unlocked !== 'master') {
@@ -581,7 +581,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('thousand', 'true');
       updatePizzasPerSecond();
       triggerConfetti();
-      if (sound) popSound.play();
+      if (sound) audioConfetti.play();
       showToast(translations[currentLanguage].toastUnlockThousand);
     }
     if (unlockedSomething) {
@@ -594,14 +594,14 @@ document.addEventListener('DOMContentLoaded', function () {
   function checkClickReward() {
     if (totalClicks > 0 && totalClicks % 1000 === 0) {
         updateClickValue();
-        if (sound) popSound.play();
+        if (sound) audioConfetti.play();
         showToast(translations[currentLanguage].toastClickReward.replace('{clicks}', totalClicks));
         triggerConfetti();
     }
     if (totalClicks > 0 && totalClicks % 600 === 0) {
         clickBonus += 1;
         updateClickValue();
-        if (sound) popSound.play();
+        if (sound) audioConfetti.play();
         showToast('🍕 +1 PIZZA!');
         triggerConfetti();
         saveGameData();
@@ -926,7 +926,4 @@ document.addEventListener('DOMContentLoaded', function () {
   updateDisplay();
   setInterval(saveGameData, 10000);
   setInterval(generateAutomaticPizzas, 1000);
-  if (sound) {
-        audioTheme.play();
-  }
 });
