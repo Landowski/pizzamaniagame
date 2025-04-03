@@ -852,14 +852,20 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function showToast(message) {
-    const toast = document.getElementById('toast');
-    const toastMessage = toast.querySelector('.toast-message');
-    toastMessage.textContent = message;
-    toast.classList.add('show');
-    toast.addEventListener('click', function hideToast() {
-    toast.classList.remove('show');
-    toast.removeEventListener('click', hideToast);
-    });
+      const toast = document.getElementById('toast');
+      const toastMessage = toast.querySelector('.toast-message');
+      toastMessage.textContent = message;
+      toast.classList.add('show');
+      const autoCloseTimer = setTimeout(() => {
+          toast.classList.remove('show');
+          toast.removeEventListener('click', hideToast);
+      }, 5000);
+      function hideToast() {
+          toast.classList.remove('show');
+          toast.removeEventListener('click', hideToast);
+          clearTimeout(autoCloseTimer); // Cancela o timer se fechado manualmente
+      }
+      toast.addEventListener('click', hideToast);
   }
 
   function resetGame() {
