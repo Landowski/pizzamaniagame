@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
   const audio = new Audio('sound/cash.mp3');
-  const popSound = new Audio('sound/pop.mp3');
+  const popSound = new Audio('sound/confetti.mp3');
   const configSound = document.getElementById('configSound');
   const buttonMakePizza = document.getElementById('buttonMakePizza');
   const pizzaImage = document.getElementById('pizza-image');
