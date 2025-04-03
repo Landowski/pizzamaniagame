@@ -34,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
   
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
-  const audio = new Audio('sound/cash.mp3');
-  const popSound = new Audio('sound/confetti.mp3');
+  const audioPop = new Audio('sound/pop.mp3');
+  const audioCash = new Audio('sound/cash.mp3');
+  const audioConfetti = new Audio('sound/confetti.mp3');
   const configSound = document.getElementById('configSound');
   const buttonMakePizza = document.getElementById('buttonMakePizza');
   const pizzaImage = document.getElementById('pizza-image');
@@ -557,21 +558,21 @@ document.addEventListener('DOMContentLoaded', function () {
       unlocked = 'master';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) popSound.play();
+      if (sound) audioConfetti.play();
       showToast(translations[currentLanguage].toastUnlockMaster);
     }
     else if (totalClicks >= 100000 && unlocked !== 'global' && unlocked !== 'master' && unlocked !== 'chocolate') {
       unlocked = 'chocolate';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) popSound.play();
+      if (sound) audioConfetti.play();
       showToast(translations[currentLanguage].toastUnlockChocolate);
     }
     else if (totalClicks >= 10000 && unlocked !== 'global' && unlocked !== 'master' && unlocked !== 'chocolate' && unlocked !== 'coke') {
       unlocked = 'coke';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) popSound.play();
+      if (sound) audioConfetti.play();
       showToast(translations[currentLanguage].toastUnlockCoke);
     }
     else if (totalClicks >= 1000000 && thousand === false) {
@@ -745,6 +746,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   buttonMakePizza.addEventListener('click', function (event) {
     if (event.isTrusted) {
+      if (sound) {
+        audioPop.play();
+      }
       totalClicks++;
       checkClickReward();
       checkUnlocks();
@@ -764,7 +768,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateDisplay();
       saveGameData();
       if (sound) {
-        audio.play();
+        audioCash.play();
       }
     }
   });
