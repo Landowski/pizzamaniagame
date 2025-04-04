@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const audioTheme = new Audio('sound/theme.mp3');
   audioTheme.loop = true;
   const audioCash = new Audio('sound/cash.mp3');
-  const audioBuy = new Audio('sound/buy.mp3');
   const audioConfetti = new Audio('sound/confetti.mp3');
   const configSound = document.getElementById('configSound');
   const buttonMakePizza = document.getElementById('buttonMakePizza');
@@ -84,10 +83,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let priceDeliverer = document.getElementById('priceDeliverer');
   let priceVan = document.getElementById('priceVan');
   let pricePizzeria = document.getElementById('pricePizzeria');
-  let buyChef = document.getElementById('buy-chef');
-  let buyDeliverer = document.getElementById('buy-deliverer');
-  let buyVan = document.getElementById('buy-van');
-  let buyPizzeria = document.getElementById('buy-pizzeria');
+  let Chef = document.getElementById('-chef');
+  let Deliverer = document.getElementById('-deliverer');
+  let Van = document.getElementById('-van');
+  let Pizzeria = document.getElementById('-pizzeria');
 
   const translations = {
     'en': {
@@ -709,6 +708,7 @@ document.addEventListener('DOMContentLoaded', function () {
           chefPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameChef);
           if (sound) {
+            const audioBuy = new Audio('sound/buy.mp3');
             audioBuy.play();
           }
         }
