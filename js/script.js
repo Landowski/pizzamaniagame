@@ -83,10 +83,10 @@ document.addEventListener('DOMContentLoaded', function () {
   let priceDeliverer = document.getElementById('priceDeliverer');
   let priceVan = document.getElementById('priceVan');
   let pricePizzeria = document.getElementById('pricePizzeria');
-  let Chef = document.getElementById('-chef');
-  let Deliverer = document.getElementById('-deliverer');
-  let Van = document.getElementById('-van');
-  let Pizzeria = document.getElementById('-pizzeria');
+  let buyChef = document.getElementById('buy-chef');
+  let buyDeliverer = document.getElementById('buy-deliverer');
+  let buyVan = document.getElementById('buy-van');
+  let buyPizzeria = document.getElementById('buy-pizzeria');
 
   const translations = {
     'en': {
