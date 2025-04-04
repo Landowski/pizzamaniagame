@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const audioTheme = new Audio('sound/theme.mp3');
   audioTheme.loop = true;
   const audioPop = new Audio('sound/pop.mp3');
+  audioPop.volume = 0;
   const audioCash = new Audio('sound/cash.mp3');
   const audioBuy = new Audio('sound/buy.mp3');
   const audioConfetti = new Audio('sound/confetti.mp3');
@@ -759,7 +760,7 @@ document.addEventListener('DOMContentLoaded', function () {
   buttonMakePizza.addEventListener('click', function (event) {
     if (event.isTrusted) {
       if (sound) {
-        audioPop.play();
+        audioPop.play().then(() => audioPop.pause());
       }
       totalClicks++;
       checkClickReward();
