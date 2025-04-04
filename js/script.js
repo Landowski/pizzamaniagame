@@ -721,6 +721,10 @@ document.addEventListener('DOMContentLoaded', function () {
           const percentIncrease = Math.random() * 4 + 1;
           delivererPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameDeliverer);
+          if (sound) {
+            const audioBuy = new Audio('sound/buy.mp3');
+            audioBuy.play();
+          }
         }
         break;
       case 'van':
@@ -732,6 +736,7 @@ document.addEventListener('DOMContentLoaded', function () {
           vanPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameVan);
           if (sound) {
+            const audioBuy = new Audio('sound/buy.mp3');
             audioBuy.play();
           }
         }
@@ -745,6 +750,7 @@ document.addEventListener('DOMContentLoaded', function () {
           pizzeriaPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].namePizzeria);
           if (sound) {
+            const audioBuy = new Audio('sound/buy.mp3');
             audioBuy.play();
           }
         }
