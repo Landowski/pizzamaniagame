@@ -709,6 +709,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const percentIncrease = Math.random() * 4 + 1;
           chefPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameChef);
+          if (sound) {
+            audioBuy.play();
+          }
         }
         break;
       case 'deliverer':
@@ -729,6 +732,9 @@ document.addEventListener('DOMContentLoaded', function () {
           const percentIncrease = Math.random() * 4 + 1;
           vanPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameVan);
+          if (sound) {
+            audioBuy.play();
+          }
         }
         break;
       case 'pizzeria':
@@ -739,11 +745,11 @@ document.addEventListener('DOMContentLoaded', function () {
           const percentIncrease = Math.random() * 4 + 1;
           pizzeriaPrice = Math.round(price * (1 + percentIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].namePizzeria);
+          if (sound) {
+            audioBuy.play();
+          }
         }
         break;
-    }
-    if (sound) {
-        audioBuy.play();
     }
     updatePizzasPerSecond();
     updateDisplay();
@@ -762,6 +768,9 @@ document.addEventListener('DOMContentLoaded', function () {
       updateDisplay();
       saveGameData();
       createFloatingText('+' + clickValue);
+      if (sound) {
+            audioBuy.play();
+          }
     } else {
       showToast( translations[currentLanguage].toastAutoclick + ' 💀');
     }
