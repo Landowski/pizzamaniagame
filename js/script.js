@@ -942,7 +942,9 @@ document.addEventListener('DOMContentLoaded', function () {
   updateDisplay();
   setInterval(saveGameData, 10000);
   setInterval(generateAutomaticPizzas, 1000);
-  audioTheme.play();
+  if (sound) {
+    audioTheme.play();
+  }
   document.addEventListener('click', function firstInteraction() {
     if (sound && audioTheme.paused) {
         audioTheme.play();
