@@ -768,9 +768,6 @@ document.addEventListener('DOMContentLoaded', function () {
       updateDisplay();
       saveGameData();
       createFloatingText('+' + clickValue);
-      if (sound) {
-            audioBuy.play();
-          }
     } else {
       showToast( translations[currentLanguage].toastAutoclick + ' 💀');
     }
