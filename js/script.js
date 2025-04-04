@@ -36,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const soundImage = document.getElementById('sound');
   const audioTheme = new Audio('sound/theme.mp3');
   audioTheme.loop = true;
-  const audioCash = new Audio('sound/cash.mp3');
   const audioConfetti = new Audio('sound/confetti.mp3');
   const configSound = document.getElementById('configSound');
   const buttonMakePizza = document.getElementById('buttonMakePizza');
@@ -786,6 +785,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateDisplay();
       saveGameData();
       if (sound) {
+        const audioCash = new Audio('sound/cash.mp3');
         audioCash.play();
       }
     }
