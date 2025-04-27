@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+
   let sound = localStorage.getItem('sound');
   if (sound === null) {
     sound = true;
@@ -6,10 +7,8 @@ document.addEventListener('DOMContentLoaded', function () {
   } else {
     sound = sound === 'true';
   }
-
   const elementsToToggle = document.querySelectorAll('.container, .container-buy, .header-counters-items, #money-counter, #counterMoney, #counterChef, #counterDeliverer, #counterVan, #counterPizzeria, #nameChef, #nameDeliverer, #nameVan, #namePizzeria');
   const configDarkMode  = document.getElementById('configDarkMode');
-
   let darkMode = localStorage.getItem('darkMode') === 'true';
   if (darkMode) {
     document.body.classList.add('dark');
@@ -20,23 +19,19 @@ document.addEventListener('DOMContentLoaded', function () {
   configDarkMode.addEventListener('click', function() {
     darkMode = !darkMode;
     localStorage.setItem('darkMode', darkMode);
-    
     document.body.classList.toggle('dark');
     elementsToToggle.forEach(element => {
       element.classList.toggle('dark');
     });
   });
-
   document.addEventListener('contextmenu', (e) => {
     e.preventDefault();
     return false;
   });
-  
   let currentLanguage = localStorage.getItem('language') || 'en';
   const soundImage = document.getElementById('sound');
-  const audioTheme = new Audio('sound/theme.mp3');
-  audioTheme.loop = true;
   const audioConfetti = new Audio('sound/confetti.mp3');
+  const audioBonus = new Audio('sound/bonus.mp3');
   const configSound = document.getElementById('configSound');
   const buttonMakePizza = document.getElementById('buttonMakePizza');
   const pizzaImage = document.getElementById('pizza-image');
@@ -49,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const configLang = document.getElementById("configLang");
   const popupLang = document.getElementById("popup-lang");
   const buttonClosePopupLang = document.getElementById("buttonClosePopupLang");
-
+  let milestonesReachedCount = 0;
   let nameChef = document.getElementById('nameChef');
   let nameDeliverer = document.getElementById('nameDeliverer');
   let nameVan = document.getElementById('nameVan');
@@ -70,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
   let textReset = document.getElementById('textReset');
   let textMoreClicks = document.getElementById('textMoreClicks');
   let textPrivacyPolicy = document.getElementById('textPrivacyPolicy');
-  
   let counterPizzas = document.getElementById('counterPizzas');
   let counterPizzasPerSecond = document.getElementById('counterPizzasPerSecond');
   let counterMoney = document.getElementById('counterMoney');
@@ -86,7 +80,47 @@ document.addEventListener('DOMContentLoaded', function () {
   let buyDeliverer = document.getElementById('buy-deliverer');
   let buyVan = document.getElementById('buy-van');
   let buyPizzeria = document.getElementById('buy-pizzeria');
-
+  let clickMilestones = [
+    { clicks: 50, reached: false },
+    { clicks: 100, reached: false },
+    { clicks: 250, reached: false },
+    { clicks: 500, reached: false },
+    { clicks: 750, reached: false },
+    { clicks: 1000, reached: false },
+    { clicks: 1500, reached: false },
+    { clicks: 2000, reached: false },
+    { clicks: 3000, reached: false },
+    { clicks: 4000, reached: false },
+    { clicks: 5000, reached: false },
+    { clicks: 7500, reached: false },
+    { clicks: 10000, reached: false },
+    { clicks: 15000, reached: false },
+    { clicks: 20000, reached: false },
+    { clicks: 25000, reached: false },
+    { clicks: 30000, reached: false },
+    { clicks: 40000, reached: false },
+    { clicks: 50000, reached: false },
+    { clicks: 75000, reached: false },
+    { clicks: 100000, reached: false },
+    { clicks: 150000, reached: false },
+    { clicks: 200000, reached: false },
+    { clicks: 250000, reached: false },
+    { clicks: 300000, reached: false },
+    { clicks: 400000, reached: false },
+    { clicks: 500000, reached: false },
+    { clicks: 600000, reached: false },
+    { clicks: 700000, reached: false },
+    { clicks: 800000, reached: false },
+    { clicks: 900000, reached: false },
+    { clicks: 1000000, reached: false }
+  ];
+  let clickStreakCount = 0;
+  let clickStreakTimer = null;
+  let clickStreakBonus = 0;
+  let lastClickTime = 0;
+  const STREAK_REQUIREMENTS = [50, 100, 150, 200, 250, 300, 350, 400, 450, 500];
+  let currentStreakLevel = 0;
+  const STREAK_TIMEOUT = 1800;
   const translations = {
     'en': {
       buttonSellPizzas: 'SELL ALL PIZZAS!',
@@ -116,7 +150,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 UNLOCKED CHOCOLATE! +500 PIZZAS PER CLICK',
       toastUnlockCoke: '🏆 UNLOCKED SODA POP! +100 PIZZAS PER CLICK',
       toastUnlockThousand: '🏆 UNLOCKED ONE MILLION CLICKS BONUS! +100,000 PIZZAS PER SECOND',
-      toastClickReward: '🏆 UNLOCKED CLICKING REWARD! +10 PIZZA',
+      toastStreak: '🔥 Streak:',
+      toastStreakEnded: 'Streak ended:',
       toastAutoclick: 'Autoclick not allowed!'
     },
     'pt-br': {
@@ -147,7 +182,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 DESBLOQUEADO CHOCOLATE! +500 PIZZAS POR CLIQUE',
       toastUnlockCoke: '🏆 DESBLOQUEADO REFRIGERANTE! +100 PIZZAS POR CLIQUE',
       toastUnlockThousand: '🏆 DESBLOQUEADO BÔNUS DE UM MILHÃO DE CLIQUES! +100.000 PIZZAS POR SEGUNDO',
-      toastClickReward: '🏆 DESBLOQUEADO RECOMPENSA DE CLIQUE! +10 PIZZAS',
+      toastStreak: '🔥 Sequência:',
+      toastStreakEnded: 'Sequência finalizada:',
       toastAutoclick: 'Autoclick não permitido!'
     },
     'es': {
@@ -178,7 +214,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 DESBLOQUEADO CHOCOLATE! +500 PIZZAS POR CLIC',
       toastUnlockCoke: '🏆 DESBLOQUEADO REFRESCO! +100 PIZZAS POR CLIC',
       toastUnlockThousand: '🏆 DESBLOQUEADO BONIFICACIÓN DE UN MILLÓN DE CLICS! +100.000 PIZZAS POR SEGUNDO',
-      toastClickReward: '🏆 DESBLOQUEADA RECOMPENSA POR CLIC! +10 PIZZAS',
+      toastStreak: '🔥 Secuencia:',
+      toastStreakEnded: 'Secuencia terminada:',
       toastAutoclick: '¡Autoclick no permitido!'
     },
     'ja': {
@@ -209,7 +246,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 解除：チョコレート！クリックごとに+500ピザ',
       toastUnlockCoke: '🏆 解除：ソーダポップ！クリックごとに+100ピザ',
       toastUnlockThousand: '🏆 解除：100万クリックボーナス！毎秒+100,000ピザ',
-      toastClickReward: '🏆 解除：クリック報酬！+10ピザ',
+      toastStreak: '🔥 順序:',
+      toastStreakEnded: 'シーケンスが終了しました:',
       toastAutoclick: '自動クリックは許可されていません！'
     },
     'ru': {
@@ -240,7 +278,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 РАЗБЛОКИРОВАН ШОКОЛАД! +500 ПИЦЦ ЗА КЛИК',
       toastUnlockCoke: '🏆 РАЗБЛОКИРОВАНА ГАЗИРОВКА! +100 ПИЦЦ ЗА КЛИК',
       toastUnlockThousand: '🏆 РАЗБЛОКИРОВАН БОНУС ЗА МИЛЛИОН КЛИКОВ! +100.000 ПИЦЦ В СЕКУНДУ',
-      toastClickReward: '🏆 РАЗБЛОКИРОВАНА НАГРАДА ЗА КЛИК! +10 ПИЦЦ',
+      toastStreak: '🔥 последовательность:',
+      toastStreakEnded: 'последовательность закончилась:',
       toastAutoclick: 'Автоклик не разрешен!'
     },
     'zh': {
@@ -271,7 +310,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 解锁巧克力！每次点击+500披萨',
       toastUnlockCoke: '🏆 解锁汽水！每次点击+100披萨',
       toastUnlockThousand: '🏆 解锁百万次点击奖励！每秒+100,000披萨',
-      toastClickReward: '🏆 解锁点击奖励！+10披萨',
+      toastStreak: '🔥 顺序:',
+      toastStreakEnded: '序列结束:',
       toastAutoclick: '不允许自动点击！'
     },
     'it': {
@@ -302,7 +342,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 SBLOCCATO CIOCCOLATO! +500 PIZZE PER CLIC',
       toastUnlockCoke: '🏆 SBLOCCATA BIBITA GASSATA! +100 PIZZE PER CLIC',
       toastUnlockThousand: '🏆 SBLOCCATO BONUS DA UN MILIONE DI CLIC! +100.000 PIZZE AL SECONDO',
-      toastClickReward: '🏆 SBLOCCATA RICOMPENSA PER CLIC! +10 PIZZE',
+      toastStreak: '🔥 Sequenza:',
+      toastStreakEnded: 'Sequenza terminata:',
       toastAutoclick: 'Autoclick non consentito!'
     },
     'de': {
@@ -333,7 +374,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 FREIGESCHALTET SCHOKOLADE! +500 PIZZEN PRO KLICK',
       toastUnlockCoke: '🏆 FREIGESCHALTET LIMONADE! +100 PIZZEN PRO KLICK',
       toastUnlockThousand: '🏆 FREIGESCHALTET EINE MILLION KLICKS BONUS! +100.000 PIZZEN PRO SEKUNDE',
-      toastClickReward: '🏆 FREIGESCHALTET KLICK-BELOHNUNG! +10 PIZZEN',
+      toastStreak: '🔥 Sequenz:',
+      toastStreakEnded: 'Sequenz beendet:',
       toastAutoclick: 'Autoklick nicht erlaubt!'
     },
     'ko': {
@@ -364,7 +406,8 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 해금됨 초콜릿! 클릭당 +500 피자',
       toastUnlockCoke: '🏆 해금됨 소다팝! 클릭당 +100 피자',
       toastUnlockThousand: '🏆 해금됨 백만 클릭 보너스! 초당 +100,000 피자',
-      toastClickReward: '🏆 해금됨 클릭 보상! +10 피자',
+      toastStreak: '🔥 순서:',
+      toastStreakEnded: '시퀀스 종료됨:',
       toastAutoclick: '자동 클릭이 허용되지 않습니다!'
     },
     'fr': {
@@ -395,11 +438,11 @@ document.addEventListener('DOMContentLoaded', function () {
       toastUnlockChocolate: '🏆 DÉBLOQUÉ CHOCOLAT ! +500 PIZZAS PAR CLIC',
       toastUnlockCoke: '🏆 DÉBLOQUÉ SODA ! +100 PIZZAS PAR CLIC',
       toastUnlockThousand: '🏆 DÉBLOQUÉ BONUS D\'UN MILLION DE CLICS ! +100 000 PIZZAS PAR SECONDE',
-      toastClickReward: '🏆 DÉBLOQUÉ RÉCOMPENSE DE CLIC ! +10 PIZZAS',
+      toastStreak: '🔥 Séquence:',
+      toastStreakEnded: 'Séquence terminée:',
       toastAutoclick: 'Autoclic non autorisé!'
     }
   };
-
   function applyTranslation() {
     if (!translations[currentLanguage]) {
       currentLanguage = 'en';
@@ -427,25 +470,20 @@ document.addEventListener('DOMContentLoaded', function () {
     textMoreClicks.innerHTML = `<strong>${texts.textMoreClicks}</strong>`;
     textPrivacyPolicy.textContent = texts.textPrivacyPolicy;
   }
-
   const languageSelect = document.getElementById('language-select');
   languageSelect.value = currentLanguage;
-
   languageSelect.addEventListener("change", function() {
     const selectedLang = languageSelect.value;
     changeLanguage(selectedLang);
   });
-
   function changeLanguage(lang) {
     currentLanguage = lang;
     localStorage.setItem('language', lang);
     applyTranslation();
   }
-
   buttonClosePopupLang.addEventListener("click", function() {
     popupLang.classList.toggle('hidden');
   });
-
   let pizzasCount = 0;
   let pizzasPerSecond = 0;
   let moneyCount = 0;
@@ -457,27 +495,23 @@ document.addEventListener('DOMContentLoaded', function () {
   let delivererPrice = 500;
   let vanPrice = 1500;
   let pizzeriaPrice = 5000;
-  
   let totalClicks = 0;
   let unlocked = 'none';
   let clickValue = 1;
   let thousand = false;
   let clickBonus = 0;
-
   const DEFAULT_PRICES = {
     chef: 100,
     deliverer: 500,
     van: 1500,
     pizzeria: 5000
   };
-
   const PIZZAS_PER_SECOND = {
     chef: 1,
     deliverer: 5,
     van: 15,
     pizzeria: 50
   };
-
   function loadGameData() {
     pizzasCount = parseInt(localStorage.getItem('pizzasCount') || 0);
     moneyCount = parseInt(localStorage.getItem('moneyCount') || 0);
@@ -491,13 +525,27 @@ document.addEventListener('DOMContentLoaded', function () {
     pizzeriaPrice = parseInt(localStorage.getItem('pizzeriaPrice') || DEFAULT_PRICES.pizzeria);
     totalClicks = parseInt(localStorage.getItem('totalClicks') || 0);
     clickBonus = parseInt(localStorage.getItem('clickBonus') || 0);
+    milestonesReachedCount = parseInt(localStorage.getItem('milestonesReachedCount') || 0);
     unlocked = localStorage.getItem('unlocked') || 'none';
     thousand = localStorage.getItem('thousand') === 'true';
+    const savedMilestones = localStorage.getItem('clickMilestones');
+    if (savedMilestones) {
+        const parsed = JSON.parse(savedMilestones);
+        clickMilestones = clickMilestones.map(m => {
+            const saved = parsed.find(sm => sm.clicks === m.clicks);
+            return saved ? {...m, reached: saved.reached} : m;
+        });
+    }
     updateClickValue();
     updatePizzaImage();
     updateDisplay();
+    updateMilestoneTrophy();
   }
-
+  function updateMilestoneTrophy() {
+    milestonesReachedCount = clickMilestones.filter(m => m.reached).length;
+    const milestoneCount = document.getElementById('milestoneCount');
+    milestoneCount.textContent = milestonesReachedCount;
+  }
   function saveGameData() {
     localStorage.setItem('pizzasCount', pizzasCount);
     localStorage.setItem('moneyCount', moneyCount);
@@ -514,23 +562,25 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('unlocked', unlocked);
     localStorage.setItem('thousand', thousand);
     localStorage.setItem('clickBonus', clickBonus);
+    localStorage.setItem('clickMilestones', JSON.stringify(clickMilestones));
   }
-  
   function updateClickValue() {
     let baseValue = 1;
     if (unlocked === 'global') {
-      baseValue += 1999;
+        baseValue += 1999;
     } else if (unlocked === 'master') {
-      baseValue += 999;
+        baseValue += 999;
     } else if (unlocked === 'chocolate') {
-      baseValue += 499;
+        baseValue += 499;
     } else if (unlocked === 'coke') {
-      baseValue += 99;
+        baseValue += 99;
     }
-    let thousandBonus = Math.floor(totalClicks / 100)  * 10;
+    let thousandBonus = 0;
+    if (thousand) {
+        thousandBonus = Math.floor(totalClicks / 100) * 10;
+    }
     clickValue = baseValue + thousandBonus + clickBonus;
   }
-  
   function updatePizzaImage() {
     if (unlocked === 'global') {
       pizzaImage.src = 'images/button-make-pizza-5.png';
@@ -544,35 +594,34 @@ document.addEventListener('DOMContentLoaded', function () {
       pizzaImage.src = 'images/button-make-pizza.png';
     }
   }
-  
   function checkUnlocks() {
     let unlockedSomething = false;
     if (totalClicks >= 500000 && unlocked !== 'global') {
       unlocked = 'global';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) audioConfetti.play();
+      if (sound) audioBonus.play();
       showToast(translations[currentLanguage].toastUnlockGlobal);
     }
     else if (totalClicks >= 300000 && unlocked !== 'global' && unlocked !== 'master') {
       unlocked = 'master';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) audioConfetti.play();
+      if (sound) audioBonus.play();
       showToast(translations[currentLanguage].toastUnlockMaster);
     }
     else if (totalClicks >= 100000 && unlocked !== 'global' && unlocked !== 'master' && unlocked !== 'chocolate') {
       unlocked = 'chocolate';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) audioConfetti.play();
+      if (sound) audioBonus.play();
       showToast(translations[currentLanguage].toastUnlockChocolate);
     }
     else if (totalClicks >= 10000 && unlocked !== 'global' && unlocked !== 'master' && unlocked !== 'chocolate' && unlocked !== 'coke') {
       unlocked = 'coke';
       unlockedSomething = true;
       triggerConfetti();
-      if (sound) audioConfetti.play();
+      if (sound) audioBonus.play();
       showToast(translations[currentLanguage].toastUnlockCoke);
     }
     else if (totalClicks >= 1000000 && thousand === false) {
@@ -580,7 +629,7 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.setItem('thousand', 'true');
       updatePizzasPerSecond();
       triggerConfetti();
-      if (sound) audioConfetti.play();
+      if (sound) audioBonus.play();
       showToast(translations[currentLanguage].toastUnlockThousand);
     }
     if (unlockedSomething) {
@@ -589,24 +638,140 @@ document.addEventListener('DOMContentLoaded', function () {
       saveGameData();
     }
   }
-
   function checkClickReward() {
-    if (totalClicks > 0 && totalClicks % 1000 === 0) {
+    for (let i = 0; i < clickMilestones.length; i++) {
+      const milestone = clickMilestones[i];
+      if (!milestone.reached && totalClicks >= milestone.clicks) {
+        milestone.reached = true;
+        updateMilestoneTrophy();
+        const bonus = calculateClickBonus(i, milestone.clicks);
+        clickBonus += bonus;
         updateClickValue();
         if (sound) audioConfetti.play();
-        showToast(translations[currentLanguage].toastClickReward.replace('{clicks}', totalClicks));
-        triggerConfetti();
-    }
-    if (totalClicks > 0 && totalClicks % 600 === 0) {
-        clickBonus += 1;
-        updateClickValue();
-        if (sound) audioConfetti.play();
-        showToast('🍕 +1 PIZZA!');
+        showToast(`🏆 +${bonus} PIZZA! (${milestone.clicks} clicks)`);
         triggerConfetti();
         saveGameData();
+      }
     }
   }
-  
+  function calculateClickBonus(milestoneIndex, clicksReached) {
+    if (clicksReached < 1000) {
+      return Math.floor(2 + Math.random() * 2);
+    } else if (clicksReached < 10000) {
+      return Math.floor(3 + Math.random() * 3);
+    } else if (clicksReached < 100000) {
+      return Math.floor(5 + Math.random() * 5);
+    } else if (clicksReached < 500000) {
+      return Math.floor(8 + Math.random() * 7);
+    } else {
+      return Math.floor(15 + Math.random() * 10);
+    }
+  }
+  function updateClickStreak() {
+    const currentTime = Date.now();
+    if (lastClickTime === 0) {
+        lastClickTime = currentTime;
+        clickStreakCount = 1;
+        updateStreakDisplay();
+        clickStreakTimer = setTimeout(() => {
+            showStreakEnded();
+            resetStreak();
+        }, STREAK_TIMEOUT);
+        return;
+    }
+    if (currentTime - lastClickTime > STREAK_TIMEOUT) {
+        showStreakEnded();
+        resetStreak();
+        lastClickTime = currentTime;
+        clickStreakCount = 1;
+        updateStreakDisplay();
+        clickStreakTimer = setTimeout(() => {
+            showStreakEnded();
+            resetStreak();
+        }, STREAK_TIMEOUT);
+        return;
+    }
+    clickStreakCount++;
+    clearTimeout(clickStreakTimer);
+    const newStreakLevel = getCurrentStreakLevel();
+    if (newStreakLevel > currentStreakLevel) {
+        currentStreakLevel = newStreakLevel;
+        updateStreakDisplay();
+        
+        if (currentStreakLevel === STREAK_REQUIREMENTS.length) {
+            triggerConfetti();
+            if (sound) audioBonus.play();
+        }
+    }
+    if (currentStreakLevel === STREAK_REQUIREMENTS.length) {
+        const basePower = clickValue;
+        let maxBonus;
+        if (basePower < 10) {
+          maxBonus = 7;
+        } else if (basePower < 50) {
+          maxBonus = Math.floor(basePower * 0.7);
+        } else if (basePower < 200) {
+          maxBonus = Math.floor(basePower * 0.5);
+        } else if (basePower < 1000) {
+          maxBonus = Math.floor(basePower * 0.3);
+        } else {
+          maxBonus = Math.floor(basePower * 0.15);
+        }
+        maxBonus = Math.max(5, maxBonus);
+        const streakFactor = 1 + (currentStreakLevel * 0.05);
+        clickStreakBonus = Math.floor(maxBonus * streakFactor);
+    }
+    clickStreakTimer = setTimeout(() => {
+        if (clickStreakCount > 0) {
+            showStreakEnded();
+        }
+        resetStreak();
+    }, STREAK_TIMEOUT);
+    lastClickTime = currentTime;
+  }
+  function getCurrentStreakLevel() {
+    for (let i = STREAK_REQUIREMENTS.length - 1; i >= 0; i--) {
+        if (clickStreakCount >= STREAK_REQUIREMENTS[i]) {
+            return i + 1;
+        }
+    }
+    return 0;
+  }
+  function updateStreakDisplay() {
+    const progressBar = document.querySelector('.streak-progress');
+    const container = document.querySelector('.streak-container-all');
+    container.classList.remove('streak-complete');
+    const percentage = (currentStreakLevel / STREAK_REQUIREMENTS.length) * 100;
+    progressBar.style.width = `${percentage}%`;
+    if (currentStreakLevel === STREAK_REQUIREMENTS.length) {
+        progressBar.style.backgroundColor = '#FF7800';
+        container.classList.add('streak-complete');
+    } else {
+        progressBar.style.backgroundColor = '#febc1f';
+    }
+    void container.offsetWidth;
+  }
+  function showStreakEnded() {
+    if (clickStreakCount > 0) {     
+        setTimeout(() => {
+            const progressBar = document.querySelector('.streak-progress');
+            progressBar.style.width = '0%';
+            progressBar.style.backgroundColor = '#febc1f';
+            resetStreak();
+        }, 2000);
+    }
+  }
+  function resetStreak() {
+    clickStreakCount = 0;
+    currentStreakLevel = 0;
+    clickStreakBonus = 0;
+    lastClickTime = 0;
+    clearTimeout(clickStreakTimer);
+    clickStreakTimer = null;
+    const progressBar = document.querySelector('.streak-progress');
+    progressBar.style.width = '0%';
+    progressBar.style.backgroundColor = '#febc1f';
+  }
   function updateDisplay() {
     counterPizzas.textContent = formatarNumeroUS(pizzasCount);
     counterMoney.textContent = formatarNumeroUS(moneyCount);
@@ -622,13 +787,10 @@ document.addEventListener('DOMContentLoaded', function () {
     updateSellButtonState();
     updateBuyButtonsState();
   }
-
   function updateSoundIcon() {
     soundImage.src = sound ? 'images/config-sound-on.svg' : 'images/config-sound-off.svg';
   }
-
   updateSoundIcon();
-
   function updateSellButtonState() {
     if (pizzasCount === 0) {
       buttonSellPizzas.disabled = true;
@@ -640,7 +802,6 @@ document.addEventListener('DOMContentLoaded', function () {
       buttonSellPizzas.style.cursor = 'pointer';
     }
   }
-
   function updateBuyButtonsState() {
     if (moneyCount >= chefPrice) {
       priceChef.classList.remove('off');
@@ -679,7 +840,6 @@ document.addEventListener('DOMContentLoaded', function () {
       buyPizzeria.style.cursor = 'default';
     }
   }
-
   function updatePizzasPerSecond() {
     let basePizzasPerSecond = 
     chefCount * PIZZAS_PER_SECOND.chef + 
@@ -693,7 +853,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     counterPizzasPerSecond.textContent = formatarNumeroUS(pizzasPerSecond);
   }
-
   function buyItem(itemType) {
     let price;
     let count;
@@ -703,8 +862,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           chefCount++;
-          const percentIncrease = Math.random() * 4 + 1;
-          chefPrice = Math.round(price * (1 + percentIncrease / 100));
+          const baseIncrease = 8;
+          const quantityFactor = 1 + (chefCount / 15);
+          const randomFactor = Math.random() * 5 + 5;
+          const totalPercentIncrease = baseIncrease * quantityFactor * (randomFactor / 10);
+          const maxIncrease = 25;
+          const effectiveIncrease = Math.min(totalPercentIncrease, maxIncrease);
+          chefPrice = Math.round(price * (1 + effectiveIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameChef);
           if (sound) {
             const audioBuy = new Audio('sound/buy.mp3');
@@ -717,8 +881,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           delivererCount++;
-          const percentIncrease = Math.random() * 4 + 1;
-          delivererPrice = Math.round(price * (1 + percentIncrease / 100));
+          const baseIncrease = 7;
+          const quantityFactor = 1 + (delivererCount / 12);
+          const randomFactor = Math.random() * 6 + 4;
+          const totalPercentIncrease = baseIncrease * quantityFactor * (randomFactor / 10);
+          const maxIncrease = 22;
+          const effectiveIncrease = Math.min(totalPercentIncrease, maxIncrease);
+          delivererPrice = Math.round(price * (1 + effectiveIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameDeliverer);
           if (sound) {
             const audioBuy = new Audio('sound/buy.mp3');
@@ -731,8 +900,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           vanCount++;
-          const percentIncrease = Math.random() * 4 + 1;
-          vanPrice = Math.round(price * (1 + percentIncrease / 100));
+          const baseIncrease = 10;
+          const quantityFactor = 1 + (vanCount / 10);
+          const randomFactor = Math.random() * 5 + 5;
+          const totalPercentIncrease = baseIncrease * quantityFactor * (randomFactor / 10);
+          const maxIncrease = 30;
+          const effectiveIncrease = Math.min(totalPercentIncrease, maxIncrease);
+          vanPrice = Math.round(price * (1 + effectiveIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].nameVan);
           if (sound) {
             const audioBuy = new Audio('sound/buy.mp3');
@@ -745,8 +919,13 @@ document.addEventListener('DOMContentLoaded', function () {
         if (moneyCount >= price) {
           moneyCount -= price;
           pizzeriaCount++;
-          const percentIncrease = Math.random() * 4 + 1;
-          pizzeriaPrice = Math.round(price * (1 + percentIncrease / 100));
+          const baseIncrease = 12;
+          const quantityFactor = 1 + (pizzeriaCount / 8);
+          const randomFactor = Math.random() * 6 + 7;
+          const totalPercentIncrease = baseIncrease * quantityFactor * (randomFactor / 10);
+          const maxIncrease = 35;
+          const effectiveIncrease = Math.min(totalPercentIncrease, maxIncrease);
+          pizzeriaPrice = Math.round(price * (1 + effectiveIncrease / 100));
           createFloatingText('+1 ' + translations[currentLanguage].namePizzeria);
           if (sound) {
             const audioBuy = new Audio('sound/buy.mp3');
@@ -759,25 +938,25 @@ document.addEventListener('DOMContentLoaded', function () {
     updateDisplay();
     saveGameData();
   }
-
   buttonMakePizza.addEventListener('click', function (event) {
     if (event.isTrusted) {
       if (sound) {
-        const audioPop = new Audio('sound/pop.mp3');
-        audioPop.play();
+          const audioPop = new Audio('sound/pop.mp3');
+          audioPop.play();
       }
       totalClicks++;
       checkClickReward();
+      updateClickStreak();
       checkUnlocks();
-      pizzasCount += clickValue;
+      const totalClickValue = clickValue + clickStreakBonus;
+      pizzasCount += totalClickValue;
       updateDisplay();
       saveGameData();
-      createFloatingText('+' + clickValue);
+      createFloatingText('+' + totalClickValue);
     } else {
-      showToast( translations[currentLanguage].toastAutoclick + ' 💀');
+        showToast(translations[currentLanguage].toastAutoclick + ' 💀');
     }
   });
-
   buttonSellPizzas.addEventListener('click', function () {
     if (pizzasCount > 0) {
       moneyCount += pizzasCount;
@@ -790,54 +969,38 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
   });
-
   buyChef.addEventListener('click', function() {
     buyItem('chef');
   });
-  
   buyDeliverer.addEventListener('click', function() {
     buyItem('deliverer');
   });
-  
   buyVan.addEventListener('click', function() {
     buyItem('van');
   });
-  
   buyPizzeria.addEventListener('click', function() {
     buyItem('pizzeria');
   });
-
   configSound.addEventListener('click', function () {
     sound = !sound;
     localStorage.setItem('sound', sound);
     updateSoundIcon();
-    if (sound) {
-        audioTheme.play();
-    } else {
-        audioTheme.pause();
-    }
   });
-
   configInfo.addEventListener("click", function() {
     popupInfo.classList.toggle('hidden');
   });
-
   buttonClosePopupInfo.addEventListener("click", function() {
     popupInfo.classList.toggle('hidden');
   });
-
   configLang.addEventListener("click", function() {
     const selectedLang = languageSelect.value;
     changeLanguage(selectedLang);
     popupLang.classList.remove('hidden');
   });
-
   buttonClosePopupLang.addEventListener("click", function() {
     popupLang.classList.add('hidden');
   });
-
   configReset.addEventListener('click', resetGame);
-
   function createFloatingText(text) {
     const floatingText = document.createElement('span');
     floatingText.textContent = text;
@@ -854,13 +1017,11 @@ document.addEventListener('DOMContentLoaded', function () {
       floatingText.remove();
     }, 1000);
   }
-
   function formatarNumeroUS(numero) {
     return new Intl.NumberFormat('en-US', {
       maximumFractionDigits: 0
     }).format(numero);
   }
-
   function generateAutomaticPizzas() {
     if (pizzasPerSecond > 0) {
       pizzasCount += pizzasPerSecond;
@@ -868,7 +1029,6 @@ document.addEventListener('DOMContentLoaded', function () {
       saveGameData();
     }
   }
-
   function triggerConfetti() {
     confetti({
       particleCount: 100,
@@ -877,24 +1037,22 @@ document.addEventListener('DOMContentLoaded', function () {
       zIndex: 9999999999
     });
   }
-
   function showToast(message) {
-      const toast = document.getElementById('toast');
-      const toastMessage = toast.querySelector('.toast-message');
-      toastMessage.textContent = message;
-      toast.classList.add('show');
-      const autoCloseTimer = setTimeout(() => {
-          toast.classList.remove('show');
-          toast.removeEventListener('click', hideToast);
-      }, 5000);
-      function hideToast() {
-          toast.classList.remove('show');
-          toast.removeEventListener('click', hideToast);
-          clearTimeout(autoCloseTimer);
-      }
-      toast.addEventListener('click', hideToast);
+    const toast = document.getElementById('toast');
+    const toastMessage = toast.querySelector('.toast-message');
+    toastMessage.textContent = message;
+    toast.classList.add('show');
+    const autoCloseTimer = setTimeout(() => {
+        toast.classList.remove('show');
+        toast.removeEventListener('click', hideToast);
+    }, 5000);
+    function hideToast() {
+        toast.classList.remove('show');
+        toast.removeEventListener('click', hideToast);
+        clearTimeout(autoCloseTimer);
+    }
+    toast.addEventListener('click', hideToast);
   }
-
   function resetGame() {
     const resetConfirmText = translations[currentLanguage].textResetGame;
     if (confirm(resetConfirmText)) {
@@ -914,6 +1072,13 @@ document.addEventListener('DOMContentLoaded', function () {
       clickValue = 1;
       thousand = false;
       clickBonus = 0;
+      clickStreakCount = 0;
+      clickStreakBonus = 0;
+      clickMilestones = clickMilestones.map(m => ({ ...m, reached: false }));
+      milestonesReachedCount = 0;
+      clickStreakCount = 0;
+      clickStreakBonus = 0;
+      currentStreakLevel = 0;
       updatePizzaImage();
       localStorage.removeItem('pizzasCount');
       localStorage.removeItem('moneyCount');
@@ -932,6 +1097,8 @@ document.addEventListener('DOMContentLoaded', function () {
       localStorage.removeItem('sound');
       localStorage.removeItem('language');
       localStorage.removeItem('clickBonus');
+      localStorage.removeItem('clickMilestones');
+      localStorage.removeItem('milestonesReachedCount');
       soundImage.src = 'images/config-sound-on.svg';
       localStorage.removeItem('darkMode');
       document.body.classList.remove('dark');
@@ -939,22 +1106,13 @@ document.addEventListener('DOMContentLoaded', function () {
         element.classList.remove('dark');
       });
       updateDisplay();
+      updateMilestoneTrophy();
     }
   }
-
   applyTranslation();
   loadGameData();
   updatePizzasPerSecond();
   updateDisplay();
   setInterval(saveGameData, 10000);
   setInterval(generateAutomaticPizzas, 1000);
-  if (sound) {
-    audioTheme.play();
-  }
-  document.addEventListener('click', function firstInteraction() {
-    if (sound && audioTheme.paused) {
-        audioTheme.play();
-    }
-    document.removeEventListener('click', firstInteraction);
-  }, { once: true });
 });

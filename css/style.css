@@ -36,7 +36,7 @@
         width: 100%;
         border: 2px solid #e0e0e0;
         border-radius: 30px;
-        margin-top: 20px;
+        margin-top: 10px;
         overflow: hidden !important;
     }
 
@@ -51,6 +51,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px;
+        padding-bottom: 0px !important;
     }
 
     .header-counters-items {
@@ -69,18 +70,47 @@
     }
 
     .container-pizza {
+        position: relative;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
     }
 
+    .logo {
+        z-index: 6;
+        pointer-events: none;
+    }
+
+    .milestone-trophy {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        height: fit-content;
+        top: 40px;
+        right: 0px;
+        font-size: 20px;
+        color: rgb(0, 0, 0);
+        z-index: 10;
+        pointer-events: none;
+    }
+      
+    .milestone-trophy span {
+        font-size: 20px;
+        margin-left: 4px;
+        font-weight: 900;
+        color: #fcc023;
+    }
+      
     #buttonMakePizza {
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
-        margin-top: -25px;
+        margin-top: -20px;
+        z-index: 5;
     }
 
     #buttonMakePizza img {
@@ -104,6 +134,7 @@
         pointer-events: none;
         text-shadow: 2px 2px 0px #C12727;
         animation: floatUp 1.2s ease-out forwards;
+        z-index: 99;
     }
     
     @keyframes floatUp {
@@ -133,7 +164,7 @@
         border-radius: 30px;
         cursor: pointer;
         gap: 10px;
-        margin-top: 25px;
+        margin-top: 8px;
     }
 
     #money-counter {
@@ -142,7 +173,7 @@
         align-items: center;
         justify-content: center;
         gap: 5px;
-        margin-top: 20px;
+        margin-top: 8px;
         font-size: 24px;
         font-weight: 700;
         user-select: none;
@@ -156,13 +187,53 @@
         color: #ebebeb;
     }
 
+    .streak-container-all {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .streak-container {
+        width: 230px;
+        height: 10px;
+        background-color: #ebebeb;
+        border-radius: 5px;
+        overflow: hidden;
+        margin: 5px auto;
+        position: relative;
+    }
+    
+    .streak-progress {
+        height: 100%;
+        background-color: #fee101;
+        width: 0%;
+        transition: width 0.3s ease;
+    }
+    
+    .streak-text {
+        font-size: 20px;
+        margin-left: -10px;
+        margin-top: -8px;
+        z-index: 5;
+    }
+    
+    .streak-complete {
+        animation: pulse 0.5s ease-in-out 3;
+    }
+    
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
     .container-buy {
         width: 100%;
         display: flex;
         align-items: start;
         justify-content: space-between;
         gap: 10px;
-        margin-top: 20px;
+        margin-top: 8px;
         padding: 10px;
         background-color: var(--color-yellow);
     }
@@ -226,7 +297,7 @@
         align-items: center;
         max-width: 340px;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 15px;
         overflow: hidden !important;
     }
 
