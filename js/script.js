@@ -868,8 +868,8 @@ document.addEventListener('DOMContentLoaded', function () {
         updateStreakDisplay();
         
         if (currentStreakLevel === STREAK_REQUIREMENTS.length) {
-            triggerConfetti();
             if (sound) audioBonus.play();
+            showToast('+PIZZAS 🔥🔥🔥🔥🔥');
         }
     }
     if (currentStreakLevel === STREAK_REQUIREMENTS.length) {
