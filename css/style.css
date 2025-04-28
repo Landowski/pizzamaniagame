@@ -191,6 +191,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        gap: 3px;
     }
 
     .streak-container {
@@ -212,7 +213,6 @@
     
     .streak-text {
         font-size: 20px;
-        margin-left: -10px;
         margin-top: -8px;
         z-index: 5;
     }
